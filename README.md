@@ -1,6 +1,6 @@
-# TechWise - Team12
+# TechWise - Team12 
 
-## game development
+## Hellzone game development
 
 ```
  Unreal Engine 5
