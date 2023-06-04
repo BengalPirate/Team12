@@ -5,12 +5,32 @@ Frames per second
 Levels/ Zones
 	Hell
 		Seven layers of hell
+			- open field
+				-Level 1 kingdom of sloth: desert like territory with lava pits and decaying carcases, rotting trees
+				-Level 3 kingdom of gluttony: black and green rocky environment with decaying carcasses, rotting trees
+				-Level 5 kingdom of greed: desert like territory, piles of gold and 
+				-Level 7 kingdom of lust: pink purple hellscape, purple tinted lightning, black translucent clouds moving over player
+				-Level 9 kingdom of envy: black hellscape, white lightning
+				-Level 11 kingdom of wrath: fiety pit of hell (red and black), 
+				-Level 13 kingdom of pride: ice cold territory
+
+			- archfiend castles
+				-Level 2 Castle of sloth
+				-Level 4 Castle of gluttony
+				-Level 6 Castle of greed
+				-Level 8 Castle of lust
+				-Level 10 Castle of envy
+				-Level 12 Castle of wrath
+				-Level 14 Castle of pride
 	Earth
 		New York night
-		New York storming night
+			-
+
+			-satanists lairs
+		New York storming night with lightning
 	Heaven
-		Main Heaven
-		Corrupted Heaven
+		Corrupted Heaven (gray clouds, lightning, rain)
+		
 
 Sprtes
 - designing character sprite and changes based on 8 directions
@@ -27,37 +47,68 @@ Sprtes
 				- hell's bloodhounds
 				- black skeletons
 				- demon bats
+				- ghouls
 				- poisonous serpents
 			Earth
 				- lycans
 				- vampires
+				- zombies
+			Heaven
+				- larger demons
+				- corrupted angels
+				
 		mini bosses
 			Hell
-				- 
+				Seven Deadly Jinns/ Archfiends
+					- Sloth/ Belphegor  (slow but powerful demon)
+						- second form is extremely fast
+					- Gluttony/ Beelzebub (large fat demon)
+						- second form 
+					- Greed/ Mammon (fat smiling demon)
+						-second form
+					- Lust/ Baphomet (breasted goat demon)
+						-second form similar to first but more menacing
+					- Envy/ Leviathan (shape shifting demon)
+						- first form is a mirror image of the player with same access to weapons
+						- second form is a large worm/ dinosaur
+					- Wrath/ Apollyon (red demon)
+						- second form
+					- Pride/ Satan (son of lucifer, humanoid demon in a suit that is his fathers prophet with one bat wing)
+						- second form is large horned demon
 			Earth
-				- hooded satanists
+				- hooded satanists/ illuminatos
+					disciple of sloth
+					-second forms have similar mechanics to the seven deadly Jinns but with new mechanics added
+					disciple of gluttony
+					
+					disciple of lust
+					disciple of greed
+					disciple of wrath
+					disciple of envy
+					disciple of pride
 				- satanic high priest
+				- Vampire King Dracula
+			Heaven
+				- Corrupted Angels
+					-Michael
+					-Raphael	
+					-Gabriel
+					-Uriel
 		main bosses
 			Hell
-				- Demon Archfields
-					- 
-					- Leviathan
-					- Baphomet
+				- Pride (third form looks similar to trigon from teen titans)
 			Earth		
-				- Vampire King Dracula
-				- Death
+				- The Antichrist (blinded in one eye, other eye is red, glowing red 666 in hebrew on forehead)
 			Heaven
+				- Death (Grim Reaper)
 				- The Red Dragon
-				- Corrupted angels
-					- Michael
-					- Raphael
-					- Gabriel
 		final boss
-			- Lucifer
-				- first form
-				- second form
-				- third form
-				- fourth form
+			- Lucifer 
+				- first form (angel of light)
+				- second form (demonic looking angel of light with red horns and black wings)
+				- third form (merged with pride and the resurrected antichrist)
+				- fourth form (red and black decaying monster)
+
         - enemy movement animation
         - enemy speed to player
         - enemy attacks
@@ -65,12 +116,21 @@ Sprtes
 		- weak spots
 	- enemy death animation
 	- visibility radar
-		-how enemyes react when player is not in view
+		-how enemies react when player is not in view
 Movement
 - Sprite Animation
-- Dash movement using spacebar
+- Dash movement using spaceba
 
-Weapons
+Weapons (all weapons drain stamina which recover over time)
+- ist of weapons
+	Projectiles
+	- holy (a pair of pistols that act as default projectiles)
+		-always accessible but drain stamina extremely slowly
+	- death penalty (a bazooka like weapon that leaves burning flames afterwards)
+	
+	Meele
+	- the living word (a sword)
+	- scythe
 - mechanism for weapons switching
         meele   
         - using the ijkl keys for directional meele
@@ -83,7 +143,9 @@ Weapons
 
 On screen assets
 - Heath bar
-- stamina bar for dashes
+- stamina bar (denoted as faith) for dashes and certain weapons
+	- changes in player speed when stamina runs out
+	-recovers over time
 - digning the global maps
         - mini map of environment
 - rpg mechanics
