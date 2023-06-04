@@ -6,22 +6,29 @@ Levels/ Zones
 	Hell
 		Seven levels of hell
 			- open field
-				-Level 1 kingdom of sloth: desert like territory with lava pits and decaying carcases, rotting trees
-				-Level 3 kingdom of gluttony: black and green rocky environment with decaying carcasses, rotting trees
-				-Level 5 kingdom of greed: desert like territory, piles of gold and 
-				-Level 7 kingdom of lust: pink purple hellscape, purple tinted lightning, black translucent clouds moving over player
-				-Level 9 kingdom of envy: black hellscape, white lightning
-				-Level 11 kingdom of wrath: fiety pit of hell, bubbling lava (red and black), 
-				-Level 13 kingdom of pride: ice cold territory with snowing environment
+				-Level 9 kingdom of sloth: desert like territory with lava pits and decaying carcases, rotting trees
+				-Level 11 kingdom of gluttony: black and green rocky environment with decaying carcasses, rotting trees
+				-Level 13 kingdom of greed: desert like territory, piles of gold and 
+				-Level 15 kingdom of lust: pink purple hellscape, purple tinted lightning, black translucent clouds moving over player
+				-Level 17 kingdom of envy: black hellscape, white lightning
+				-Level 19 kingdom of wrath: fiety pit of hell, bubbling lava (red and black), 
+				-Level 21 kingdom of pride: ice cold territory with snowing environment
 
 			- archfiend castles
-				-Level 2 Castle of sloth :cob webs
-				-Level 4 Castle of gluttony : slime 
-				-Level 6 Castle of greed: 
-				-Level 8 Castle of lust: 
-				-Level 10 Castle of envy: black mist and mirrors, enelies can randomly attack with one of the players mechanisms 
-				-Level 12 Castle of wrath: 
-				-Level 14 Castle of pride: bluish white icy castle with snow
+				-Level 10 Castle of sloth :cob webs
+					at end is bossfight with sloth
+				-Level 12 Castle of gluttony : slime 
+					at end is bossfight with gluttony
+				-Level 14 Castle of greed: 
+					at end is bossfight with greed
+				-Level 16 Castle of lust: 
+					at end is bossfight with Lust
+				-Level 18 Castle of envy: black mist and mirrors, enelies can randomly attack with one of the players mechanisms 
+					at end is bossfight with Envy
+				-Level 20 Castle of wrath: 
+					at end if bossfight with Wrath
+				-Level 22 Castle of pride: bluish white icy castle with snow
+					at end is bossfight with pride
 	Environmental Mechanics
 		Lava pits
 			player is hurt when touching the borders of the lava pits for 3 seconds before an instant death occurs
@@ -32,15 +39,29 @@ Levels/ Zones
 			if a player steps on these zones it is instant death
 		
 	Earth
-		New York night
-			-level
-
-			-satanists lairs
-		New York storming night with lightning
-			-Dracula's Castle
+			-Satanists lair
+				-level 1 Sloth's disciple
+					at the end is bossfight
+				-level 2 Gluttony's disciple
+					at the end is bossfight
+				-level 3 Greed's disciple
+					at the end is bossfight
+				-level 4 lust's disciple
+					at the end is bossfight
+				-level 5 envy's disciple
+					at the end is bossfight 
+				-level 6 wrath's disciple, storming with rain, lightning and thunder,  city of new york
+					at the end is bossfight in time square
+				-level 7 satanic high priest, church
+					at the end is bossfight  is bossfight in main area of church
+			-dracula/ antichrist castle
+				-level 8 antichrist's underground dungeon under church
+					at the end is bossfight with Dracula/ Antichrist
+ 
 	Heaven
 		Corrupted Heaven (gray clouds, lightning, rain)
-		
+			-level 31
+			-level 32 bossfight
 
 
 Sprites
@@ -70,46 +91,45 @@ Sprites
 				- zombies (move like ghouls)
 			Heaven
 				- larger demons
-				- corrupted angels
+				- corrupted angels 
+					- covered in eyes
+					- 4 headed beast
 				
 		mini bosses (have slowly regenrating health like the player)
 			Hell
 				Seven Deadly Jinns/ Archfiends
 					- Sloth/ Belphegor  (slow but powerful demon)
 						- second form is extremely fast
-					-* Gluttony/ Beelzebub (large fat demon)
+					- Gluttony/ Beelzebub (large fat demon)
 						-stamina takes twice as long to reegenerate
 						- second form 
-					-* Greed/ Mammon (fat smiling demon)
+					- Greed/ Mammon (fat smiling demon)
 						-shoots flaming projectiles
 						-second form
-					-* Lust/ Baphomet (breasted goat demon)
+					- Lust/ Baphomet (breasted goat demon)
 						-second form similar to first but more menacing
 						- if caught in field of gaze speed is cut by 50% for 5 seconds
-					-* Envy/ Leviathan (shape shifting demon)
-						- first form is a mirror image of the player with same access to weapons
+					- Envy/ Leviathan (shape shifting demon)
+						- first form is a mirror image of the player with same access to weapons and 1.2x speed minus the ability to dash
 							has a decoy after image that can attack and stays on screen for 5 seconds
 						-second form is a worm like monster
-					-* Wrath/ Apollyon (red demon)
+					- Wrath/ Apollyon (red demon)
 						- first form breathes fire bombs, keeps area burning for 5 seconds
 						- second form
-					-* Pride/ Satan (son of lucifer, humanoid demon in a suit that is his fathers prophet with one bat wing)
+					- Pride/ Satan (son of lucifer, humanoid demon in a suit that is his fathers prophet with one bat wing)
 						- activates pantagrams on floor which damage the player while inside them and can explode knocking the player back
 						- second form is large black horned demon
 			Earth
 				- hooded satanists/ illuminatos
 					disciple of sloth
-					-second forms have similar mechanics to the seven deadly Jinns but with new mechanics added
 					disciple of gluttony
-					
 					disciple of lust
 					disciple of greed
 					disciple of wrath
 					disciple of envy
-						-copies al of the abilities the player currently has but is able to 1.1x faster
-					disciple of pride
-				- satanic high priest
-				- Vampire King Dracula
+						-copies all of the abilities the player currently has
+					disciple of wrath, an evil nun (pentagram on forehead, black eyes and crying blood)
+					disciple of pride/ satanic high priest
 			Heaven
 				- Corrupted Angels
 					-Michael
@@ -120,7 +140,9 @@ Sprites
 			Hell
 				- Pride (third form looks similar to trigon from teen titans)
 			Earth		
-				- The Antichrist (blinded in one eye, other eye is red, glowing red 666 in hebrew on forehead)
+				- Vampire King Dracula/ The Antichrist
+					-phase 2 he is blinded in one eye, other eye is black, glowing red 666 in hebrew on forehead)
+					-utilizes illuminati pyramid for attacks
 			Heaven
 				- Death (Grim Reaper)
 				- The Red Dragon
@@ -128,7 +150,7 @@ Sprites
 			- Lucifer 
 				- first form (angel of light)
 				- second form (demonic looking angel of light with red horns and black wings)
-				- third form (merged with pride and the resurrected antichrist)
+				- third form (merged with pride and the resurrected antichrist, main eyes are closed but 3rd eye open on forehead
 				- fourth form (red and black decaying monster)
 
         - enemy spawn animation
@@ -151,22 +173,22 @@ Weapons (all weapons drain stamina which recovers over time,
 	Projectiles
 	- holy (pistol that act as default projectiles)
 		-always accessible but drain stamina extremely slowly
-		 	upgraded  to dual pistol which double rate of fire after killing greed 
+		 	upgraded  to dual pistol which double rate of fire after killing greeds disciple 
 				can be leveled up to push low level enemies back
-			upgraded to double rate of fire after defeating disciple of greed
+			upgraded to double rate of fire after killing greed
 				can be leveled up to leave burining after damage
 	- death penalty (a bazooka like weapon that leaves burning flames afterwards for 5 seconds)
-		obtained after killing wrath
+		obtained after killing wrath's disciple
 			can be leveled up by exp to increase the area of damage as well as stamina requirements 
-		upgraded once after defeating the disciple of wrath
+		upgraded once after killing wrath
 			allows for twice rate of fire
 			can be leveled up to leave flames burning for 10 seconds
 	Meele
 	- the living word (a sword that acts as default melee)
 		-always accessible but drains stamina extremely slowly
-			obtains ability to regenerate more stamina than cost to use after killing gluttony
+			obtains ability to regenerate more stamina than cost to use after killing gluttony's disciple
 				can be leveled up to fully regenerate stamina after killing enemies
-			upgraded once after defeating the disciple of gluttony
+			upgraded once after killing gluttony
 				can be leveled up so dash no longer costs stamina
 			
 	- soul reaper (significant damage to all enemies, one hit K.O. all enemies that are not boss level)
@@ -179,25 +201,25 @@ Weapons (all weapons drain stamina which recovers over time,
 			both placed and triggered by the p button
 			
 	- "The Lord's Protection" (pushes all enemies with in radius back which causing damage)
-		obtained after killing sloth
+		obtained after killing sloth's disciple
 			leveled up to be a bigger sphere
-		upgraded once after defeating the disciple of sloth
+		upgraded once after killing sloth
 			leveled up to push enemies further away
 	- "Scapegoat" (leaves an active faded after image for 5 second when dashing that attracts some enemies. the after image behaves like the player and can attack)
 			there is a time delay of 1 minute before it can be used again
-		obtained after killing Envy 
+		obtained after killing Envy's disciple 
 			can be leveled up by exp to increase time up to 15 seconds	
-		upgraded once after defeating the disciple of envy
+		upgraded once after killing envy
 			allows for leaving two after images
 	- "Freeze" (Freezes all lower level enemies for 5 seconds, higher level enemies speed is cut in half)
-		obtained after killing lust
+		obtained after killing lust's disciple
 			can be leveled up by exp to increase time up to 15 seconds
-		upgraded once after defeating the disciple of lust
+		upgraded once after killing lust
 			can be leveled up to cause enemies to attack each other
 	- "Prayer" (circular area lasting 10 seconds that slowly damages any enemies inside)
-		optained after defeating pride the first time
+		optained after defeating Dracula the first time
 			can be leveled up by exp to increase the field of activity
-		upgraded once after defeating the disciple of pride
+		upgraded once after killing pride
 			can be leveled up to leave a poison effect on enemies even after area has ended
 			at max level instant kills any low level enemies in circle and does significant damage to high level enemies
 - mechanism for weapons switching
