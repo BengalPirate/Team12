@@ -88,6 +88,7 @@ Sprites
 - designing character sprite and changes based on 8 directions
         - animations for game over
 	- animation while idle
+		character lights and smokes a cigarette when idle
 	- player response to attack
 		- position movement for more damaging attacks
 		- screen shakes for damaging attacks
