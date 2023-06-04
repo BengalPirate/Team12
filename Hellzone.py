@@ -29,7 +29,7 @@ while True:
 
     keys = pygame.key.get_pressed()
 
-    pygame.draw.rect(displaym (255, 255, 255), (100-display_scroll[0], 100-display_scroll[1], 16, 16))
+    pygame.draw.rect(display, (255, 255, 255), (100-display_scroll[0], 100-display_scroll[1], 16, 16))
 
     if keys[pygame.K_a]:
         display_scroll[0] -= 5
