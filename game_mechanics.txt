@@ -40,20 +40,27 @@ Levels/ Zones
 		
 	Dark Earth, objective is to find out what broke the seal of hell causing the creation of monsters on earth
 			-Satanists lair
-				-level 1 Sloth's disciple abandoned building
-					at the end is bossfight
+				-level 1 Sloth's disciple:		  rundown crackhouse building
+					at the end is bossfight:
+
 				-level 2 Gluttony's disciple
-					at the end is bossfight
-				-level 3 Greed's disciple, must climb office building
-					at the end is bossfighton roof of building while storming in rain, lightning and thunder
-				-level 4 lust's disciple
-					at the end is bossfight in a night club
-				-level 5 envy's disciple
-					at the end is bossfight 
-				-level 6 wrath's disciple, storming with rain, lightning and thunder,  city of new york
-					at the end is bossfight in time square
-				-level 7 satanic high priest, church
-					at the end is bossfight  is bossfight in main area of church
+					at the end is bossfight:
+
+				-level 3 Greed's disciple: 		must climb office building
+					at the end is bossfight: 	on roof of building while storming in rain, lightning and thunder
+
+				-level 4 lust's disciple:
+					at the end is bossfight: 	in a night club
+
+				-level 5 envy's disciple:
+					at the end is bossfight:
+
+				-level 6 wrath's disciple: 		storming with rain, lightning and thunder, city of new york
+					at the end is bossfight: 	in time square
+
+				-level 7 satanic high priest: 		large labyrinth like church ground
+					at the end is bossfight: 	in main area of church
+
 			-dracula/ antichrist castle
 				-level 8 antichrist's underground dungeon under church
 					at the end is bossfight with Dracula/ Antichrist
@@ -62,15 +69,17 @@ Levels/ Zones
 	Heaven
 		Corrupted Heaven (gray clouds, lightning, rain), objective is to gether the keys to the holy of holies
 			-level 23 West wing of Heaven
-				at the end is bossfight with possessed Gabriel
+				at the end is bossfight:		with possessed Gabriel
+				second round fight is with:
 			-level 24 South wing of Heaven
-				at th end is bossfight with possessed Raphael
+				at the end is bossfight:		with possessed Raphael
+				second round fight is with:
 			-level 25 East wing of Heaven
-				at the end is bossfight with possessed Azrael
-				second round fight is with death
+				at the end is bossfight:		with possessed Azrael
+				second round fight is with:		death
 			-level 26 North wing of Heaven
-				at the end is boss fight with possessed Michael
-				second round fight is with the red dragon Adaddon
+				at the end is boss fight :		with possessed Michael
+				second round fight is with:		the red dragon Adaddon
 			-level 27 Holy of holies
 				at the end is final bossfight with Lucifer
 
