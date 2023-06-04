@@ -16,6 +16,7 @@ class Player:
 
 player = Player(400, 300, 32, 32) 
 
+display_scroll = [0,0]
 
 while True:
     display.fill((255,0,0))
@@ -25,6 +26,20 @@ while True:
             sys.exit(
             pygame.QUIT
             )
+
+    keys = pygame.key.get_pressed()
+
+    pygame.draw.rect(displaym (255, 255, 255), (100-display_scroll[0], 100-display_scroll[1], 16, 16))
+
+    if keys[pygame.K_a]:
+        display_scroll[0] -= 5
+    if keys[pygame.K_d]:
+        display_scroll[0] += 5
+    if keys[pygame.K_w]:
+        display_scroll[1] -= 5
+    if keys[pygame.K_s]:
+        display_scroll[1] += 5
+
 
     player.main(display)
 
