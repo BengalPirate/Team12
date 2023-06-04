@@ -44,10 +44,10 @@ Levels/ Zones
 					at the end is bossfight
 				-level 2 Gluttony's disciple
 					at the end is bossfight
-				-level 3 Greed's disciple
-					at the end is bossfight
+				-level 3 Greed's disciple, must climb office building
+					at the end is bossfighton roof of building while storming in rain, lightning and thunder
 				-level 4 lust's disciple
-					at the end is bossfight
+					at the end is bossfight in a night club
 				-level 5 envy's disciple
 					at the end is bossfight 
 				-level 6 wrath's disciple, storming with rain, lightning and thunder,  city of new york
@@ -135,16 +135,15 @@ Sprites
 						- activates pantagrams on floor which damage the player while inside them and can explode knocking the player back
 						- third form is large black horned demon
 			Earth
-				- hooded satanists/ illuminatos
-					disciple of sloth
-					disciple of gluttony
-					disciple of lust
-					disciple of greed
-					disciple of wrath
-					disciple of envy
+				- hooded satanists/ illuminatos (all have bleeding red pentagram on forehead, black eyes
+					disciple of sloth (skinny)
+					disciple of gluttony (looks like a mix between gluttony from full metal alchemist and kingpin from marvel and ichibe from bleach, african american though)
+					disciple of lust (suggesiive woman, looks like the skinny version of kirio hikifune from bleach, dark purple hair)
+					disciple of greed (man in white business suit, casino owner)
+					disciple of envy 
 						-copies all of the abilities the player currently has
-					disciple of wrath, an evil nun (pentagram on forehead, black eyes and crying blood)
-					disciple of pride/ satanic high priest
+					disciple of wrath, an evil nun (crying blood)
+					disciple of pride/ satanic high priest 
 			Heaven
 				- Corrupted Angels
 					-Michael
