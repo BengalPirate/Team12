@@ -38,7 +38,7 @@ Levels/ Zones
 		Pillars of Flame
 			if a player steps on these zones it is instant death
 		
-	Dark Earth, objective is to find out what is causing the creating of monsters on earth
+	Dark Earth, objective is to find out what broke the seal of hell causing the creation of monsters on earth
 			-Satanists lair
 				-level 1 Sloth's disciple
 					at the end is bossfight
@@ -257,6 +257,9 @@ On screen assets
 		-mechanics for improvement based on length of gameplay
 	- leveling up health bar
 		-recovering health (secret shards scattered through level that increase the length of the health bar)
-	
+- pause menu
+- start menu
+- save mechanics
+
 Sound
 - mp3 files for each 'level'
