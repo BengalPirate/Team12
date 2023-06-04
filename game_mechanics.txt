@@ -40,7 +40,7 @@ Levels/ Zones
 		
 	Dark Earth, objective is to find out what broke the seal of hell causing the creation of monsters on earth
 			-Satanists lair
-				-level 1 Sloth's disciple
+				-level 1 Sloth's disciple abandoned building
 					at the end is bossfight
 				-level 2 Gluttony's disciple
 					at the end is bossfight
@@ -136,11 +136,11 @@ Sprites
 						- third form is large black horned demon
 			Earth
 				- hooded satanists/ illuminatos (all have bleeding red pentagram on forehead, black eyes
-					disciple of sloth (skinny)
+					disciple of sloth (looks like skinny pete from breaking bad, a heroin drug dealer that wants to open human souls to demonic possession)
 					disciple of gluttony (looks like a mix between gluttony from full metal alchemist and kingpin from marvel and ichibe from bleach, african american though)
 					disciple of lust (suggesiive woman, looks like the skinny version of kirio hikifune from bleach, dark purple hair)
 					disciple of greed (man in white business suit, casino owner)
-					disciple of envy 
+					disciple of envy (short creepy ball headed long nose with large arch, old man wearing green cloak)
 						-copies all of the abilities the player currently has
 					disciple of wrath, an evil nun (crying blood)
 					disciple of pride/ satanic high priest 
