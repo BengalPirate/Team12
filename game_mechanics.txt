@@ -52,8 +52,8 @@ Levels/ Zones
 				-level 4 lust's disciple:
 					at the end is bossfight: 	in a night club
 
-				-level 5 envy's disciple:
-					at the end is bossfight:
+				-level 5 envy's disciple:		a cave full of bones lit with candles
+					at the end is bossfight:	
 
 				-level 6 wrath's disciple: 		storming with rain, lightning and thunder, city of new york
 					at the end is bossfight: 	in time square
@@ -149,7 +149,7 @@ Sprites
 					disciple of gluttony (looks like a mix between gluttony from full metal alchemist and kingpin from marvel and ichibe from bleach, african american though)
 					disciple of lust (suggesiive woman, looks like the skinny version of kirio hikifune from bleach, dark purple hair)
 					disciple of greed (man in white business suit, casino owner)
-					disciple of envy (short creepy ball headed long nose with large arch, old man wearing green cloak)
+					disciple of envy (short creepy ball headed long nose with large arch, old man wearing green cloak, voodoo practitioner)
 						-copies all of the abilities the player currently has
 					disciple of wrath, an evil nun (crying blood)
 					disciple of pride/ satanic high priest 
