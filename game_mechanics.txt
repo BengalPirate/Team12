@@ -1,0 +1,27 @@
+Below are a few game mechanics to consider during game development
+
+Sprtes
+- designing character sprite and changes based on 8 directions
+        -animations for game over
+- designing enemy sprites
+        - enemy movement animation
+        - enemy speed to player
+        - enemy attacks
+
+Movement
+- Sprite Animation
+- Dash movement using spacebar
+
+Weapons
+- mechanism for weapons switching
+        meele   
+        - using the ijkl keys for directional meele
+
+        bombs
+
+On screen assets
+- Heath bar
+- stamina bar for dashes
+- digning the global maps
+        - mini map of environment
+
