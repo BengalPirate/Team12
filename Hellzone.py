@@ -12,12 +12,14 @@ display = pygame.display.set_mode((800, 600))
 # creates an object to help trakc time
 clock = pygame.time.Clock()
 
-# creates a class for the player
+# creates a class for the player and attributes
 class Player:
     def __init__(self, x, y, width, height): # Define initital properties of the player
         self.x = x
         self.y = y
         self.speed = 5 #define player's speed
+
+        # checks files for images to use when player moves in a particular direction
         try:
             self.images = {
                 "up": pygame.image.load('path_to_up_image.png'),
@@ -34,11 +36,13 @@ class Player:
             self.height = self.current_image.get_height()
             self.use_images = True
 
+        # if no images can be found we default to a black triangle
         except (pygame.error, FileNotFoundError):
             self.use_images = False
             self.width = 32
             self.height = 32
 
+    #function to use in main program that updates the players image based on directional movement
     def update_image(self, direction):
         if self.use_images and direction in self.images:
             self.current_image = self.images[direction]
@@ -140,7 +144,7 @@ while True:
         player_bullets.append(PlayerBullet(player.x, player.y, "right"))
         bullet_fired = True
 
-    # Move the player according to key presses
+    # Move the player according to key presses and updates images
     if keys[pygame.K_w]:
         player.y -= player.speed
         player.update_image("up")
