@@ -28,6 +28,7 @@ Levels/ Zones
 
 			-satanists lairs
 		New York storming night with lightning
+			-Dracula's Castle
 	Heaven
 		Corrupted Heaven (gray clouds, lightning, rain)
 		
@@ -57,24 +58,30 @@ Sprtes
 				- larger demons
 				- corrupted angels
 				
-		mini bosses
+		mini bosses (have slowly regenrating health like the player)
 			Hell
 				Seven Deadly Jinns/ Archfiends
 					- Sloth/ Belphegor  (slow but powerful demon)
 						- second form is extremely fast
-					- Gluttony/ Beelzebub (large fat demon)
+					-* Gluttony/ Beelzebub (large fat demon)
+						-stamina takes twice as long to reegenerate
 						- second form 
-					- Greed/ Mammon (fat smiling demon)
+					-* Greed/ Mammon (fat smiling demon)
+						-shoots flaming projectiles
 						-second form
-					- Lust/ Baphomet (breasted goat demon)
+					-* Lust/ Baphomet (breasted goat demon)
 						-second form similar to first but more menacing
-					- Envy/ Leviathan (shape shifting demon)
+						- if caught in field of gaze speed is cut by 50% for 5 seconds
+					-* Envy/ Leviathan (shape shifting demon)
 						- first form is a mirror image of the player with same access to weapons
-						- second form is a large worm/ dinosaur
-					- Wrath/ Apollyon (red demon)
+							has a decoy after image that can attack and stays on screen for 5 seconds
+						-second form is a worm like monster
+					-* Wrath/ Apollyon (red demon)
+						- first form breathes fire bombs, keeps area burning for 5 seconds
 						- second form
-					- Pride/ Satan (son of lucifer, humanoid demon in a suit that is his fathers prophet with one bat wing)
-						- second form is large horned demon
+					-* Pride/ Satan (son of lucifer, humanoid demon in a suit that is his fathers prophet with one bat wing)
+						- activates pantagrams on floor which damage the player while inside them and can explode knocking the player back
+						- second form is large black horned demon
 			Earth
 				- hooded satanists/ illuminatos
 					disciple of sloth
@@ -85,6 +92,7 @@ Sprtes
 					disciple of greed
 					disciple of wrath
 					disciple of envy
+						-copies al of the abilities the player currently has but is able to 1.1x faster
 					disciple of pride
 				- satanic high priest
 				- Vampire King Dracula
@@ -94,7 +102,7 @@ Sprtes
 					-Raphael	
 					-Gabriel
 					-Uriel
-		main bosses
+		main bosses (have slowly regenrating health like the player)
 			Hell
 				- Pride (third form looks similar to trigon from teen titans)
 			Earth		
@@ -119,33 +127,74 @@ Sprtes
 		-how enemies react when player is not in view
 Movement
 - Sprite Animation
-- Dash movement using spaceba
+- Dash movement using spacebar
 
-Weapons (all weapons drain stamina which recover over time)
+Weapons (all weapons drain stamina which recovers over time, 
+	the more a weapon is used as in enemies killed by it over time the lower then 
+	amount of stamina it takes to use, as a hidden leeling up feature)
 - ist of weapons
 	Projectiles
-	- holy (a pair of pistols that act as default projectiles)
+	- holy (pistol that act as default projectiles)
 		-always accessible but drain stamina extremely slowly
-	- death penalty (a bazooka like weapon that leaves burning flames afterwards)
-	
+		 	upgraded  to dual pistol which double rate of fire after killing greed 
+				can be leveled up to push low level enemies back
+			upgraded to double rate of fire after defeating disciple of greed
+				can be leveled up to leave burining after damage
+	- death penalty (a bazooka like weapon that leaves burning flames afterwards for 5 seconds)
+		obtained after killing wrath
+			can be leveled up by exp to increase the area of damage as well as stamina requirements 
+		upgraded once after defeating the disciple of wrath
+			allows for twice rate of fire
+			can be leveled up to leave flames burning for 10 seconds
 	Meele
-	- the living word (a sword)
-	- scythe
+	- the living word (a sword that acts as default melee)
+		-always accessible but drains stamina extremely slowly
+			obtains ability to regenerate more stamina than cost to use after killing gluttony
+				can be leveled up to fully regenerate stamina after killing enemies
+			upgraded once after defeating the disciple of gluttony
+				can be leveled up so dash no longer costs stamina
+			
+	- soul reaper (significant damage to all enemies, one hit K.O. all enemies that are not boss level)
+		obtained after killing Death
+			can be leveled up to swing animation faster and leave behind void for 5 seconds that pulls in and damages enemies like a magnet
+
+	Other
+	-"lamp unto thine feet" (delayed landmine that does damage to enemies) can hold a stock of up to 10 per level 
+		sometimes dropped by dead enemies (2% chance
+			both placed and triggered by the p button
+			
+	- "The Lord's Protection" (pushes all enemies with in radius back which causing damage)
+		obtained after killing sloth
+			leveled up to be a bigger sphere
+		upgraded once after defeating the disciple of sloth
+			leveled up to push enemies further away
+	- "Scapegoat" (leaves an active faded after image for 5 second when dashing that attracts some enemies. the after image behaves like the player and can attack)
+			there is a time delay of 1 minute before it can be used again
+		obtained after killing Envy 
+			can be leveled up by exp to increase time up to 15 seconds	
+		upgraded once after defeating the disciple of envy
+			allows for leaving two after images
+	- "Freeze" (Freezes all lower level enemies for 5 seconds, higher level enemies speed is cut in half)
+		obtained after killing lust
+			can be leveled up by exp to increase time up to 15 seconds
+		upgraded once after defeating the disciple of lust
+			can be leveled up to cause enemies to attack each other
+	- "Prayer" (circular area lasting 10 seconds that slowly damages any enemies inside)
+		optained after defeating pride the first time
+			can be leveled up by exp to increase the field of activity
+		upgraded once after defeating the disciple of pride
+			can be leveled up to leave a poison effect on enemies even after area has ended
+			at max level instant kills any low level enemies in circle and does significant damage to high level enemies
 - mechanism for weapons switching
         meele   
         - using the ijkl keys for directional meele
 	- animation for weapons based on direction
-	- how weapons change with leveling up
-	- implementing multiple fighting styles
-        bombs
-	- landmines
-	- directional bombs
 
 On screen assets
 - Heath bar
-- stamina bar (denoted as faith) for dashes and certain weapons
-	- changes in player speed when stamina runs out
-	-recovers over time
+- stamina bar (denoted as "faith") for dashes and weapons use. 
+	- slight changes in player speed depending on if stamina is at 0% 10% 30%, 50%, 75%, or 100%
+	- recovers over time when no weapons are used and player is not dashing
 - digning the global maps
         - mini map of environment
 - rpg mechanics
@@ -155,7 +204,7 @@ On screen assets
 	- leveling up stamina 
 		-mechanics for improvement based on length of gameplay
 	- leveling up health bar
-		-recovering health
+		-recovering health (secret shards scattered through level that increase the length of the health bar)
 	
 Sound
 - mp3 files for each 'level'
