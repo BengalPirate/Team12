@@ -3,8 +3,19 @@ import pygame
 import sys 
 import math
 
+
 #Initializes all imported pygame modules
 pygame.init()
+
+pygame.mixer.init()
+
+#load mp3 file
+pygame.mixer.music.load('/home/x/Desktop/team12/Team12/final_boss.mp3')
+
+#Play the music indefinitely
+pygame.mixer.music.play(-1)
+
+print(pygame.get_error())
 
 #sets th size of the screen for display
 display = pygame.display.set_mode((800, 600))
@@ -19,6 +30,15 @@ class Player:
         self.y = y
         self.speed = 5 #define player's speed
         self.frame = 0
+        self.moving_right = False
+        self.moving_left = False
+        self.moving_up = False
+        self.moving_down = False
+        self.moving_northeast = False
+        self.moving_northwest = False
+        self.moving_southeast = False
+        self.moving_southwest = False
+
 
         # checks files for images to use when player moves in a particular direction
         try:
@@ -55,11 +75,43 @@ class Player:
             self.current_image = self.images[direction][self.frame]
 
     def main(self, display, scroll): # Method for displaying the player
+        
         if self.use_images:
             #the transform.scale changes the size of the player
             display.blit(pygame.transform.scale(self.current_image, (32,42)), (self.x - scroll[0], self.y - scroll[1]))
         else:
             pygame.draw.rect(display, (0,0,0), (self.x - scroll[0], self.y - scroll[1], self.width, self.height))
+
+        '''
+        if self.moving_up:
+            if self.use_images:
+                #the transform.scale changes the size of the player
+                display.blit(pygame.transform.scale(self.current_image, (32,42)), (self.x - scroll[0], self.y - scroll[1]))
+            else:
+                pygame.draw.rect(display, (0,0,0), (self.x - scroll[0], self.y - scroll[1], self.width, self.height))
+        elif self.moving_down:
+          if self.use_images:
+                #the transform.scale changes the size of the player
+                display.blit(pygame.transform.scale(self.current_image, (32,42)), (self.x - scroll[0], self.y - scroll[1]))
+            else:
+                pygame.draw.rect(display, (0,0,0), (self.x - scroll[0], self.y - scroll[1], self.width, self.height))
+        elif self.moving_down:
+          if self.use_images:
+                #the transform.scale changes the size of the player
+                display.blit(pygame.transform.scale(self.current_image, (32,42)), (self.x - scroll[0], self.y - scroll[1]))
+            else:
+                pygame.draw.rect(display, (0,0,0), (self.x - scroll[0], self.y - scroll[1], self.width, self.height))
+        elif self.moving_down:
+        '''
+
+        self.moving_right = False
+        self.moving_left = False
+        self.moving_up = False
+        self.moving_down = False
+        self.moving_northeast = False
+        self.moving_northwest = False
+        self.moving_southeast = False
+        self.moving_southwest = False
 
 # Creates a class for the bullet
 class PlayerBullet:
@@ -156,31 +208,39 @@ while True:
     if keys[pygame.K_w]:
         player.y -= player.speed
         player.update_image("up")
+        player.moving_up = True
     if keys[pygame.K_a]:
         player.x -= player.speed
         player.update_image("left")
+        player.moving_left = True
     if keys[pygame.K_s]:
         player.y += player.speed
         player.update_image("down")
+        player.moving_down = True
     if keys[pygame.K_d]:
         player.x += player.speed
         player.update_image("right")
+        player.moving_right = True
     if keys[pygame.K_w] and keys[pygame.K_d]:
         player.x += player.speed
         player.y -= player.speed
         player.update_image("northeast")
+        player.moving_northeast = True
     if keys[pygame.K_w] and keys[pygame.K_a]:
         player.x -= player.speed
         player.y -= player.speed
         player.update_image("northwest")
+        player.moving_northwest = True
     if keys[pygame.K_s] and keys[pygame.K_d]:
         player.x += player.speed
         player.y += player.speed
         player.update_image("southeast")
+        player.moving_southeast = True
     if keys[pygame.K_s] and keys[pygame.K_a]:
         player.x -= player.speed
         player.y += player.speed
         player.update_image("southwest")
+        player.moving_southwest = True
 
     # Update the display scroll based on player's position
     display_scroll[0] = player.x - 400
