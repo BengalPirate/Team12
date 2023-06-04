@@ -2,12 +2,15 @@ Below are a few game mechanics to consider during game development
 
 Sprtes
 - designing character sprite and changes based on 8 directions
-        -animations for game over
+        - animations for game over
+	- animation while idle
 - designing enemy sprites
         - enemy movement animation
         - enemy speed to player
         - enemy attacks
-
+	- enemy death animation
+	- visibility radar
+		-how enemyes react when player is not in view
 Movement
 - Sprite Animation
 - Dash movement using spacebar
@@ -18,6 +21,8 @@ Weapons
         - using the ijkl keys for directional meele
 
         bombs
+	- landmines
+	- directional bombs
 
 On screen assets
 - Heath bar
@@ -25,3 +30,5 @@ On screen assets
 - digning the global maps
         - mini map of environment
 
+Sound
+- mp3 files for each 'level'

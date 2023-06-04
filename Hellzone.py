@@ -18,18 +18,23 @@ class Player:
         self.x = x
         self.y = y
         self.speed = 5 #define player's speed
+        self.frame = 0
 
         # checks files for images to use when player moves in a particular direction
         try:
             self.images = {
-                "up": pygame.image.load('path_to_up_image.png'),
-                "down": pygame.image.load('path_to_down_image.png'),
-                "left": pygame.image.load('path_to_left_image.png'),
-                "right": pygame.image.load('path_to_right_image.png'),
-                "northeast": pygame.image.load('path_to_northeast_image.png'),
-                "northwest": pygame.image.load('path_to_northwest_image.png'),
-                "southeast": pygame.image.load('path_to_southeast_image.png'),
-                "southwest": pygame.image.load('path_to_southwest_image.png'),
+                # the animation of each direction should cycle through different files
+                # with each file in the set differing only by the last number
+                # we would have to put all of the files in the prackets if we do not have a common last number
+                # below im assuming we use 4 images for each direction, the more sprites we use the more detail we have
+                "up": [pygame.image.load('path_to_up_image_{}.png'.format(i)) for i in range(4)],
+                "down": [pygame.image.load('path_to_down_image_{}.png'.format(i)) for i in range(4)],
+                "left": [pygame.image.load('path_to_left_image_{}.png'.format(i)) for i in range(4)],
+                "right": [pygame.image.load('path_to_right_image_{}.png'.format(i)) for i in range(4)],
+                "northeast": [pygame.image.load('path_to_northeast_image_{}.png'.format(i)) for i in range(4)],
+                "northwest": [pygame.image.load('path_to_northwest_image_{}.png'.format(i)) for i in range(4)],
+                "southeast": [pygame.image.load('path_to_southeast_image_{}.png'.format(i)) for i in range(4)],
+                "southwest": [pygame.image.load('path_to_southwest_image_{}.png'.format(i)) for i in range(4)],
             }
             self.current_image = self.images["right"]
             self.width = self.current_image.get_width()
@@ -44,8 +49,10 @@ class Player:
 
     #function to use in main program that updates the players image based on directional movement
     def update_image(self, direction):
-        if self.use_images and direction in self.images:
-            self.current_image = self.images[direction]
+        if self.use_images:
+            self.frame = (self.frame +1) % 4 # cycle through frames 0-3
+            self.direction = direction
+            self.current_image = self.images[direction][self.frame]
 
     def main(self, display, scroll): # Method for displaying the player
         if self.use_images:
