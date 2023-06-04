@@ -4,27 +4,36 @@ Frames per second
 
 Levels/ Zones
 	Hell
-		Seven layers of hell
+		Seven levels of hell
 			- open field
 				-Level 1 kingdom of sloth: desert like territory with lava pits and decaying carcases, rotting trees
 				-Level 3 kingdom of gluttony: black and green rocky environment with decaying carcasses, rotting trees
 				-Level 5 kingdom of greed: desert like territory, piles of gold and 
 				-Level 7 kingdom of lust: pink purple hellscape, purple tinted lightning, black translucent clouds moving over player
 				-Level 9 kingdom of envy: black hellscape, white lightning
-				-Level 11 kingdom of wrath: fiety pit of hell (red and black), 
-				-Level 13 kingdom of pride: ice cold territory
+				-Level 11 kingdom of wrath: fiety pit of hell, bubbling lava (red and black), 
+				-Level 13 kingdom of pride: ice cold territory with snowing environment
 
 			- archfiend castles
-				-Level 2 Castle of sloth
-				-Level 4 Castle of gluttony
-				-Level 6 Castle of greed
-				-Level 8 Castle of lust
-				-Level 10 Castle of envy
-				-Level 12 Castle of wrath
-				-Level 14 Castle of pride
+				-Level 2 Castle of sloth :cob webs
+				-Level 4 Castle of gluttony : slime 
+				-Level 6 Castle of greed: 
+				-Level 8 Castle of lust: 
+				-Level 10 Castle of envy: black mist and mirrors, enelies can randomly attack with one of the players mechanisms 
+				-Level 12 Castle of wrath: 
+				-Level 14 Castle of pride: bluish white icy castle with snow
+	Environmental Mechanics
+		Lava pits
+			player is hurt when touching the borders of the lava pits for 3 seconds before an instant death occurs
+			player blinks rapidly to indicate that it is possible to exit
+		Bottomless pits
+			borderless zones where the player dies instantly
+		Pillars of Flame
+			if a player steps on these zones it is instant death
+		
 	Earth
 		New York night
-			-
+			-level
 
 			-satanists lairs
 		New York storming night with lightning
@@ -33,7 +42,8 @@ Levels/ Zones
 		Corrupted Heaven (gray clouds, lightning, rain)
 		
 
-Sprtes
+
+Sprites
 - designing character sprite and changes based on 8 directions
         - animations for game over
 	- animation while idle
@@ -45,15 +55,19 @@ Sprtes
 	- enemy types
 		grunts
 			Hell
-				- hell's bloodhounds
-				- black skeletons
+				- hell's bloodhounds (wrath)
+				- black skeletons (envy)
 				- demon bats
 				- ghouls
-				- poisonous serpents
+					-
+				- poisonous serpents (lust)
+					-bites leaves poison effect that lasts 10 seconds
+				- poisonous slugs 
+					-secrete slime that stays on floor for 10 seconds before evaporating, player is permanently poinsoned if touched
 			Earth
-				- lycans
-				- vampires
-				- zombies
+				- lycans (function like hell's bloodhounds
+				- vampires (function like serpents in terms of attack, move like ghouls)
+				- zombies (move like ghouls)
 			Heaven
 				- larger demons
 				- corrupted angels
@@ -117,7 +131,8 @@ Sprtes
 				- third form (merged with pride and the resurrected antichrist)
 				- fourth form (red and black decaying monster)
 
-        - enemy movement animation
+        - enemy spawn animation
+	- enemy movement animation
         - enemy speed to player
         - enemy attacks
 	- enemy animation response to attack
