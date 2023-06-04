@@ -17,12 +17,37 @@ class Player:
     def __init__(self, x, y, width, height): # Define initital properties of the player
         self.x = x
         self.y = y
-        self.width = width
-        self.height = height
         self.speed = 5 #define player's speed
+        try:
+            self.images = {
+                "up": pygame.image.load('path_to_up_image.png'),
+                "down": pygame.image.load('path_to_down_image.png'),
+                "left": pygame.image.load('path_to_left_image.png'),
+                "right": pygame.image.load('path_to_right_image.png'),
+                "northeast": pygame.image.load('path_to_northeast_image.png'),
+                "northwest": pygame.image.load('path_to_northwest_image.png'),
+                "southeast": pygame.image.load('path_to_southeast_image.png'),
+                "southwest": pygame.image.load('path_to_southwest_image.png'),
+            }
+            self.current_image = self.images["right"]
+            self.width = self.current_image.get_width()
+            self.height = self.current_image.get_height()
+            self.use_images = True
+
+        except (pygame.error, FileNotFoundError):
+            self.use_images = False
+            self.width = 32
+            self.height = 32
+
+    def update_image(self, direction):
+        if self.use_images and direction in self.images:
+            self.current_image = self.images[direction]
 
     def main(self, display, scroll): # Method for displaying the player
-        pygame.draw.rect(display, (0,0,0), (self.x - scroll[0], self.y - scroll[1], self.width, self.height))
+        if self.use_images:
+            display.blit(self.current_image, (self.x - scroll[0], self.y - scroll[1]))
+        else:
+            pygame.draw.rect(display, (0,0,0), (self.x - scroll[0], self.y - scroll[1], self.width, self.height))
 
 # Creates a class for the bullet
 class PlayerBullet:
@@ -118,12 +143,32 @@ while True:
     # Move the player according to key presses
     if keys[pygame.K_w]:
         player.y -= player.speed
+        player.update_image("up")
     if keys[pygame.K_a]:
         player.x -= player.speed
+        player.update_image("left")
     if keys[pygame.K_s]:
         player.y += player.speed
+        player.update_image("down")
     if keys[pygame.K_d]:
         player.x += player.speed
+        player.update_image("right")
+    if keys[pygame.K_w] and keys[pygame.K_d]:
+        player.x += player.speed
+        player.y -= player.speed
+        player.update_image("northeast")
+    if keys[pygame.K_w] and keys[pygame.K_a]:
+        player.x -= player.speed
+        player.y -= player.speed
+        player.update_image("northwest")
+    if keys[pygame.K_s] and keys[pygame.K_d]:
+        player.x += player.speed
+        player.y += player.speed
+        player.update_image("southeast")
+    if keys[pygame.K_s] and keys[pygame.K_a]:
+        player.x -= player.speed
+        player.y += player.speed
+        player.update_image("southwest")
 
     # Update the display scroll based on player's position
     display_scroll[0] = player.x - 400
