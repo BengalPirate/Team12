@@ -3,7 +3,7 @@ Below are a few game mechanics to consider during game development
 Frames per second
 
 Levels/ Zones
-	Hell
+	Hell, objective is to save sister from hell and prevent lucifer from entering heaven with the key of heaven
 		Seven levels of hell
 			- open field
 				-Level 9 kingdom of sloth: desert like territory with lava pits and decaying carcases, rotting trees
@@ -28,7 +28,7 @@ Levels/ Zones
 				-Level 20 Castle of wrath: 
 					at end if bossfight with Wrath
 				-Level 22 Castle of pride: bluish white icy castle with snow
-					at end is bossfight with pride
+					at end is bossfight with pride castle turnes black during second round
 	Environmental Mechanics
 		Lava pits
 			player is hurt when touching the borders of the lava pits for 3 seconds before an instant death occurs
@@ -38,7 +38,7 @@ Levels/ Zones
 		Pillars of Flame
 			if a player steps on these zones it is instant death
 		
-	Earth
+	Dark Earth, objective is to find out what is causing the creating of monsters on earth
 			-Satanists lair
 				-level 1 Sloth's disciple
 					at the end is bossfight
@@ -57,11 +57,22 @@ Levels/ Zones
 			-dracula/ antichrist castle
 				-level 8 antichrist's underground dungeon under church
 					at the end is bossfight with Dracula/ Antichrist
- 
+ 					(little sister is kidnapped and her sould is dragged to hell by the demonic hand of moloch
+						 to create the key of solomon/heaven)
 	Heaven
-		Corrupted Heaven (gray clouds, lightning, rain)
-			-level 31
-			-level 32 bossfight
+		Corrupted Heaven (gray clouds, lightning, rain), objective is to gether the keys to the holy of holies
+			-level 23 West wing of Heaven
+				at the end is bossfight with possessed Gabriel
+			-level 24 South wing of Heaven
+				at th end is bossfight with possessed Raphael
+			-level 25 East wing of Heaven
+				at the end is bossfight with possessed Azrael
+				second round fight is with death
+			-level 26 North wing of Heaven
+				at the end is boss fight with possessed Michael
+				second round fight is with the red dragon Adaddon
+			-level 27 Holy of holies
+				at the end is final bossfight with Lucifer
 
 
 Sprites
@@ -80,7 +91,7 @@ Sprites
 				- black skeletons (envy)
 				- demon bats
 				- ghouls
-					-
+				- ifrit
 				- poisonous serpents (lust)
 					-bites leaves poison effect that lasts 10 seconds
 				- poisonous slugs 
@@ -89,18 +100,20 @@ Sprites
 				- lycans (function like hell's bloodhounds
 				- vampires (function like serpents in terms of attack, move like ghouls)
 				- zombies (move like ghouls)
+				- satanic goons
 			Heaven
 				- larger demons
-				- corrupted angels 
-					- covered in eyes
+				- corrupted angels
+					- demonic cherubs 
+					- angel covered in eyes
 					- 4 headed beast
 				
 		mini bosses (have slowly regenrating health like the player)
 			Hell
 				Seven Deadly Jinns/ Archfiends
-					- Sloth/ Belphegor  (slow but powerful demon)
+					- Sloth/ two headed demon with each head named Belphegor and Belial  (slow but powerful demon)
 						- second form is extremely fast
-					- Gluttony/ Beelzebub (large fat demon)
+					- Gluttony/ Baal or Beelzebub (large fat demon)
 						-stamina takes twice as long to reegenerate
 						- second form 
 					- Greed/ Mammon (fat smiling demon)
@@ -117,8 +130,10 @@ Sprites
 						- first form breathes fire bombs, keeps area burning for 5 seconds
 						- second form
 					- Pride/ Satan (son of lucifer, humanoid demon in a suit that is his fathers prophet with one bat wing)
+						- first bossfight is possessed sister.
+						- second bossfight is humanoid demon 
 						- activates pantagrams on floor which damage the player while inside them and can explode knocking the player back
-						- second form is large black horned demon
+						- third form is large black horned demon
 			Earth
 				- hooded satanists/ illuminatos
 					disciple of sloth
