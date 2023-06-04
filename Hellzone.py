@@ -56,7 +56,8 @@ class Player:
 
     def main(self, display, scroll): # Method for displaying the player
         if self.use_images:
-            display.blit(self.current_image, (self.x - scroll[0], self.y - scroll[1]))
+            #the transform.scale changes the size of the player
+            display.blit(pygame.transform.scale(self.current_image, (32,42)), (self.x - scroll[0], self.y - scroll[1]))
         else:
             pygame.draw.rect(display, (0,0,0), (self.x - scroll[0], self.y - scroll[1], self.width, self.height))
 

@@ -1,13 +1,68 @@
 Below are a few game mechanics to consider during game development
 
+Frames per second
+
+Levels/ Zones
+	Hell
+		Seven layers of hell
+	Earth
+		New York night
+		New York storming night
+	Heaven
+		Main Heaven
+		Corrupted Heaven
+
 Sprtes
 - designing character sprite and changes based on 8 directions
         - animations for game over
 	- animation while idle
+	- player response to attack
+		- position movement for more damaging attacks
+		- screen shakes for damaging attacks
+	- dash after image
 - designing enemy sprites
+	- enemy types
+		grunts
+			Hell
+				- hell's bloodhounds
+				- black skeletons
+				- demon bats
+				- poisonous serpents
+			Earth
+				- lycans
+				- vampires
+		mini bosses
+			Hell
+				- 
+			Earth
+				- hooded satanists
+				- satanic high priest
+		main bosses
+			Hell
+				- Demon Archfields
+					- 
+					- Leviathan
+					- Baphomet
+			Earth		
+				- Vampire King Dracula
+				- Death
+			Heaven
+				- The Red Dragon
+				- Corrupted angels
+					- Michael
+					- Raphael
+					- Gabriel
+		final boss
+			- Lucifer
+				- first form
+				- second form
+				- third form
+				- fourth form
         - enemy movement animation
         - enemy speed to player
         - enemy attacks
+	- enemy animation response to attack
+		- weak spots
 	- enemy death animation
 	- visibility radar
 		-how enemyes react when player is not in view
@@ -19,7 +74,9 @@ Weapons
 - mechanism for weapons switching
         meele   
         - using the ijkl keys for directional meele
-
+	- animation for weapons based on direction
+	- how weapons change with leveling up
+	- implementing multiple fighting styles
         bombs
 	- landmines
 	- directional bombs
@@ -29,6 +86,14 @@ On screen assets
 - stamina bar for dashes
 - digning the global maps
         - mini map of environment
-
+- rpg mechanics
+	- leveling up physical strength
+	- leveling up meele weapons
+	- leveling up specific projectile weapons
+	- leveling up stamina 
+		-mechanics for improvement based on length of gameplay
+	- leveling up health bar
+		-recovering health
+	
 Sound
 - mp3 files for each 'level'
