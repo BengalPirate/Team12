@@ -115,15 +115,15 @@ while True:
         player_bullets.append(PlayerBullet(player.x, player.y, "right"))
         bullet_fired = True
 
-    # Move the player according to key presses -- Fixed Bug
+    # Move the player according to key presses
     if keys[pygame.K_w]:
-        player.y += player.speed
-    if keys[pygame.K_a]:
-        player.x += player.speed
-    if keys[pygame.K_s]:
         player.y -= player.speed
-    if keys[pygame.K_d]:
+    if keys[pygame.K_a]:
         player.x -= player.speed
+    if keys[pygame.K_s]:
+        player.y += player.speed
+    if keys[pygame.K_d]:
+        player.x += player.speed
 
     # Update the display scroll based on player's position
     display_scroll[0] = player.x - 400
