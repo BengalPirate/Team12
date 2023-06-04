@@ -6,29 +6,29 @@ Levels/ Zones
 	Hell, objective is to save sister from hell and prevent lucifer from entering heaven with the key of heaven
 		Seven levels of hell
 			- open field
-				-Level 9 kingdom of sloth: desert like territory with lava pits and decaying carcases, rotting trees
-				-Level 11 kingdom of gluttony: black and green rocky environment with decaying carcasses, rotting trees
-				-Level 13 kingdom of greed: desert like territory, piles of gold and 
-				-Level 15 kingdom of lust: pink purple hellscape, purple tinted lightning, black translucent clouds moving over player
-				-Level 17 kingdom of envy: black hellscape, white lightning
-				-Level 19 kingdom of wrath: fiety pit of hell, bubbling lava (red and black), 
-				-Level 21 kingdom of pride: ice cold territory with snowing environment
+				-Level 9 kingdom of sloth: 			desert like territory with lava pits and decaying carcases, rotting trees
+				-Level 11 kingdom of gluttony: 			black and green rocky environment with decaying carcasses, rotting trees
+				-Level 13 kingdom of greed: 			desert like territory, piles of gold and 
+				-Level 15 kingdom of lust: 			pink purple hellscape, purple tinted lightning, black translucent clouds moving over player
+				-Level 17 kingdom of envy: 			black hellscape, white lightning
+				-Level 19 kingdom of wrath: 			fiety pit of hell, bubbling lava (red and black), 
+				-Level 21 kingdom of pride: 			ice cold bluish territory with snowing environment
 
 			- archfiend castles
-				-Level 10 Castle of sloth :cob webs
+				-Level 10 Castle of sloth: 			cob webs
 					at end is bossfight with sloth
-				-Level 12 Castle of gluttony : slime 
-					at end is bossfight with gluttony
+				-Level 12 Castle of gluttony: 			slime 
+					at end is bossfight with gluttony:
 				-Level 14 Castle of greed: 
-					at end is bossfight with greed
+					at end is bossfight with greed:
 				-Level 16 Castle of lust: 
-					at end is bossfight with Lust
-				-Level 18 Castle of envy: black mist and mirrors, enelies can randomly attack with one of the players mechanisms 
-					at end is bossfight with Envy
+					at end is bossfight with Lust:
+				-Level 18 Castle of envy: 			black mist and mirrors, enelies can randomly attack with one of the players mechanisms 
+					at end is bossfight with Envy:
 				-Level 20 Castle of wrath: 
 					at end if bossfight with Wrath
-				-Level 22 Castle of pride: bluish white icy castle with snow
-					at end is bossfight with pride castle turnes black during second round
+				-Level 22 Castle of pride:			bluish white icy castle with snow
+					at end is bossfight with Pride:		castle turnes black during second round
 	Environmental Mechanics
 		Lava pits
 			player is hurt when touching the borders of the lava pits for 3 seconds before an instant death occurs
