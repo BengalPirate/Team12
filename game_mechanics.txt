@@ -6,28 +6,28 @@ Levels/ Zones
 	Hell, objective is to save sister from hell and prevent lucifer from entering heaven with the key of heaven
 		Seven levels of hell
 			- open field
-				-Level 9 kingdom of sloth: 			desert like territory with lava pits and decaying carcases, rotting trees
-				-Level 11 kingdom of gluttony: 			black and green rocky environment with decaying carcasses, rotting trees
-				-Level 13 kingdom of greed: 			desert like territory, piles of gold and 
-				-Level 15 kingdom of lust: 			pink purple hellscape, purple tinted lightning, black translucent clouds moving over player
-				-Level 17 kingdom of envy: 			black hellscape, white lightning
-				-Level 19 kingdom of wrath: 			fiety pit of hell, bubbling lava (red and black), 
-				-Level 21 kingdom of pride: 			ice cold bluish territory with snowing environment
+				-$Level 9 kingdom of sloth: 			desert like territory with lava pits and decaying carcases, rotting trees
+				-$Level 11 kingdom of gluttony: 		black and green rocky environment with decaying carcasses, rotting trees
+				-$Level 13 kingdom of greed: 			desert like territory, piles of gold and 
+				-$Level 15 kingdom of lust: 			pink purple hellscape, purple tinted lightning, black translucent clouds moving over player
+				-$Level 17 kingdom of envy: 			black hellscape, white lightning
+				-$Level 19 kingdom of wrath: 			fiety pit of hell, bubbling lava (red and black), 
+				-$Level 21 kingdom of pride: 			ice cold bluish territory with snowing environment
 
 			- archfiend castles
-				-Level 10 Castle of sloth: 			cob webs
+				-$Level 10 Castle of sloth: 			cob webs
 					at end is bossfight with sloth
-				-Level 12 Castle of gluttony: 			slime 
+				-$Level 12 Castle of gluttony: 			slime 
 					at end is bossfight with gluttony:
-				-Level 14 Castle of greed: 
+				-$Level 14 Castle of greed: 
 					at end is bossfight with greed:
-				-Level 16 Castle of lust: 
+				-$Level 16 Castle of lust: 
 					at end is bossfight with Lust:
-				-Level 18 Castle of envy: 			black mist and mirrors, enelies can randomly attack with one of the players mechanisms 
+				-$Level 18 Castle of envy: 			black mist and mirrors, enelies can randomly attack with one of the players mechanisms 
 					at end is bossfight with Envy:
-				-Level 20 Castle of wrath: 
+				-$Level 20 Castle of wrath: 
 					at end if bossfight with Wrath
-				-Level 22 Castle of pride:			bluish white icy castle with snow
+				-$Level 22 Castle of pride:			bluish white icy castle with snow
 					at end is bossfight with Pride:		castle turnes black during second round
 	Environmental Mechanics
 		Lava pits
@@ -40,47 +40,47 @@ Levels/ Zones
 		
 	Dark Earth, objective is to find out what broke the seal of hell causing the creation of monsters on earth
 			-Satanists lair
-				-level 1 Sloth's disciple:		  rundown crackhouse building
+				-$level 1 Sloth's disciple:		  rundown crackhouse building
 					at the end is bossfight:
 
-				-level 2 Gluttony's disciple
+				-$level 2 Gluttony's disciple
 					at the end is bossfight:
 
-				-level 3 Greed's disciple: 		must climb office building
+				-$level 3 Greed's disciple: 		must climb office building
 					at the end is bossfight: 	on roof of building while storming in rain, lightning and thunder
 
-				-level 4 lust's disciple:
+				-$level 4 lust's disciple:
 					at the end is bossfight: 	in a night club
 
-				-level 5 envy's disciple:		a cave full of bones lit with candles
+				-$level 5 envy's disciple:		a cave full of bones lit with candles
 					at the end is bossfight:	
 
-				-level 6 wrath's disciple: 		storming with rain, lightning and thunder, city of new york
+				-$level 6 wrath's disciple: 		storming with rain, lightning and thunder, city of new york
 					at the end is bossfight: 	in time square
 
-				-level 7 satanic high priest: 		large labyrinth like church ground
+				-$level 7 satanic high priest: 		large labyrinth like church ground
 					at the end is bossfight: 	in main area of church
 
 			-dracula/ antichrist castle
-				-level 8 antichrist's underground dungeon under church
+				-$level 8 antichrist's underground dungeon under church
 					at the end is bossfight with Dracula/ Antichrist
  					(little sister is kidnapped and her sould is dragged to hell by the demonic hand of moloch
 						 to create the key of solomon/heaven)
 	Heaven
 		Corrupted Heaven (gray clouds, lightning, rain), objective is to gether the keys to the holy of holies
-			-level 23 West wing of Heaven
+			-$level 23 West wing of Heaven
 				at the end is bossfight:		with possessed Gabriel
 				second round fight is with:
-			-level 24 South wing of Heaven
+			-$level 24 South wing of Heaven
 				at the end is bossfight:		with possessed Raphael
 				second round fight is with:
-			-level 25 East wing of Heaven
+			-$level 25 East wing of Heaven
 				at the end is bossfight:		with possessed Azrael
 				second round fight is with:		death
-			-level 26 North wing of Heaven
+			-$level 26 North wing of Heaven
 				at the end is boss fight :		with possessed Michael
 				second round fight is with:		the red dragon Adaddon
-			-level 27 Holy of holies
+			-$level 27 Holy of holies
 				at the end is final bossfight with Lucifer
 
 
