@@ -30,9 +30,10 @@ class Player:
         self.x = x
         self.y = y
         self.max_health =100
-        self.current_health = self.max_health
+        self.current_health = 100
         self.max_stamina = 100
-        self.current_stamina = self.max_stamina
+        self.current_stamina = 100
+        self.stamina_recovery_rate = 0.01
         self.max_power = 100
         self.current_power = self.max_power
         self.speed = 5 #define player's speed
@@ -47,10 +48,7 @@ class Player:
         self.moving_southwest = False
         self.dash_speed = 10 # A faster speed for dashing
         self.dashing = False #Indicates whether the player is currently dashing
-        self.dash_start_time = None # Time when dash was started
-        self.dash_stop_time = None # Time when dash stops
-        #self.dash_duration = 1 # Duration of the dash in seconds
-
+        
 
         # checks files for images to use when player moves in a particular direction
         try:
@@ -118,6 +116,12 @@ class Player:
         pygame.draw. rect(display, stamina_bar_color, pygame.Rect(stamina_bar_x, stamina_bar_y, current_stamina_width, bar_height))
         pygame.draw. rect(display, power_bar_color, pygame.Rect(power_bar_x, power_bar_y, current_power_width, bar_height))
 
+        if not self.dashing:
+            self.current_stamina += self.stamina_recovery_rate
+            if self.current_stamina > self.max_stamina:
+                self.current_stamina = self.max_stamina
+
+
     def main(self, display, scroll): # Method for displaying the player
         
         if self.use_images:
@@ -125,29 +129,7 @@ class Player:
             display.blit(pygame.transform.scale(self.current_image, (32,42)), (self.x - scroll[0], self.y - scroll[1]))
         else:
             pygame.draw.rect(display, (0,0,0), (self.x - scroll[0], self.y - scroll[1], self.width, self.height))
-
-        '''
-        if self.moving_up:
-            if self.use_images:
-                #the transform.scale changes the size of the player
-                display.blit(pygame.transform.scale(self.current_image, (32,42)), (self.x - scroll[0], self.y - scroll[1]))
-            else:
-                pygame.draw.rect(display, (0,0,0), (self.x - scroll[0], self.y - scroll[1], self.width, self.height))
-        elif self.moving_down:
-          if self.use_images:
-                #the transform.scale changes the size of the player
-                display.blit(pygame.transform.scale(self.current_image, (32,42)), (self.x - scroll[0], self.y - scroll[1]))
-            else:
-                pygame.draw.rect(display, (0,0,0), (self.x - scroll[0], self.y - scroll[1], self.width, self.height))
-        elif self.moving_down:
-          if self.use_images:
-                #the transform.scale changes the size of the player
-                display.blit(pygame.transform.scale(self.current_image, (32,42)), (self.x - scroll[0], self.y - scroll[1]))
-            else:
-                pygame.draw.rect(display, (0,0,0), (self.x - scroll[0], self.y - scroll[1], self.width, self.height))
-        elif self.moving_down:
-        '''
-
+  
         self.moving_right = False
         self.moving_left = False
         self.moving_up = False
@@ -156,47 +138,7 @@ class Player:
         self.moving_northwest = False
         self.moving_southeast = False
         self.moving_southwest = False
-    
-    def update(self, dt):  # This function is called every frame of the game
-        # Dashing logic
-        if self.dashing:
-            self.speed = self.dash_speed
-            # Check if dash duration has passed
-            if self.dash_start_time and time.time() - self.dash_start_time >= 1:
-                self.dashing = False
-                self.dash_stop_time = time.time()
-                self.speed = self.normal_speed
-        else:
-            self.speed = self.normal_speed
-            # Check if stopped dash duration has passed
-            if self.dash_stop_time and time.time() - self.dash_stop_time >= 1 and self.space_key_down:
-                self.dashing = True
-                self.dash_start_time = time.time()
-                self.speed = self.dash_speed
-                 
-    def handle_key_down(self, key):
-        if key == 'space':
-            self.space_key_down = True
-            if not self.dashing and (not self.dash_stop_time or time.time() - self.dash_stop_time >= 1):
-                self.dashing = True
-                self.dash_start_time = time.time()
-                self.speed = self.dash_speed
-                
-    def handle_key_up(self, key):
-        if key == 'space':
-            self.space_key_down = False
-            if self.dashing:
-                self.dashing = False
-                self.dash_stop_time = time.time()
-                self.speed = self.normal_speed
-    
-    '''
-    def start_dash(self):
-        if not self.dashing:
-            self.dashing = True 
-            self.dash_time = pygame.time.get_ticks() / 1000 # Get the current time
-    '''
-
+        
 # Creates a class for the bullet
 class PlayerBullet:
     def __init__(self, x, y, direction): #Define initial properties of the bullet
@@ -256,16 +198,13 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: # If the event is a quit, exit the game
             sys.exit()
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                if not player.dashing:
-                    player.start_dash()
-        elif event.type == pygame.KEYUP:
-            if event.key == pygame.K_SPACE:
-                player.dashing = False
+
+        # Let's assume that pygame.K_SPACE is the key for starting a dash
+
 
     # Get a list of all keys currently being pressed down
-    keys = pygame.key.get_pressed()
+    keys = pygame.key.get_pressed()  
+
 
     player.main(display, display_scroll)
     player.draw_bars(display)
@@ -300,46 +239,53 @@ while True:
         player_bullets.append(PlayerBullet(player.x, player.y, "right"))
         bullet_fired = True
 
-    if keys[pygame.K_SPACE]:
-        player.start_dash()
-
     # Move the player according to key presses and updates images
     if keys[pygame.K_w]:
-        if player.dashing:
+        if keys[pygame.K_SPACE] and (player.current_stamina > 0):
             player.y -= player.dash_speed
+            player.current_stamina -= 0.5
+            pygame.time.set_timer(pygame.USEREVENT, 1000) #Dash lasts for 1 second
         else:
             player.y -= player.speed 
         #player.y -= player.speed
         player.update_image("up")
         player.moving_up = True
     if keys[pygame.K_a]:
-        if player.dashing:
+        if keys[pygame.K_SPACE] and (player.current_stamina > 0):
             player.x -= player.dash_speed
+            player.current_stamina -= 0.5
+            pygame.time.set_timer(pygame.USEREVENT, 1000) #Dash lasts for 1 second
         else:
             player.x -= player.speed 
         #player.x -= player.speed
         player.update_image("left")
         player.moving_left = True
     if keys[pygame.K_s]:
-        if player.dashing:
+        if keys[pygame.K_SPACE] and (player.current_stamina > 0):
             player.y += player.dash_speed
+            player.current_stamina -= 0.5
+            pygame.time.set_timer(pygame.USEREVENT, 1000) #Dash lasts for 1 second
         else:
             player.y += player.speed 
         #player.y += player.speed
         player.update_image("down")
         player.moving_down = True
     if keys[pygame.K_d]:
-        if player.dashing:
+        if keys[pygame.K_SPACE] and (player.current_stamina > 0):
             player.x += player.dash_speed
+            player.current_stamina -= 0.5
+            pygame.time.set_timer(pygame.USEREVENT, 1000) #Dash lasts for 1 second
         else:
             player.x += player.speed 
         #player.x += player.speed
         player.update_image("right")
         player.moving_right = True
     if keys[pygame.K_w] and keys[pygame.K_d]:
-        if player.dashing:
+        if keys[pygame.K_SPACE] and (player.current_stamina > 0):
             player.x += player.dash_speed / math.sqrt(2)
             player.y -= player.dash_speed / math.sqrt(2)
+            player.current_stamina -= 0.5
+            pygame.time.set_timer(pygame.USEREVENT, 1000) #Dash lasts for 1 second
         else:
             player.x += player.speed / math.sqrt(2)
             player.y -= player.speed / math.sqrt(2)
@@ -348,9 +294,11 @@ while True:
         player.update_image("northeast")
         player.moving_northeast = True
     if keys[pygame.K_w] and keys[pygame.K_a]:
-        if player.dashing:
+        if keys[pygame.K_SPACE] and (player.current_stamina > 0):
             player.x -= player.dash_speed / math.sqrt(2)
             player.y -= player.dash_speed / math.sqrt(2)
+            player.current_stamina -= 0.5
+            pygame.time.set_timer(pygame.USEREVENT, 1000) #Dash lasts for 1 second
         else:
             player.x -= player.speed / math.sqrt(2)
             player.y -= player.speed / math.sqrt(2)
@@ -359,9 +307,11 @@ while True:
         player.update_image("northwest")
         player.moving_northwest = True
     if keys[pygame.K_s] and keys[pygame.K_d]:
-        if player.dashing:
+        if keys[pygame.K_SPACE] and (player.current_stamina > 0):
             player.x += player.dash_speed / math.sqrt(2)
             player.y += player.dash_speed / math.sqrt(2)
+            player.current_stamina -= 0.5
+            pygame.time.set_timer(pygame.USEREVENT, 1000) #Dash lasts for 1 second
         else:
             player.x += player.speed / math.sqrt(2)
             player.y += player.speed / math.sqrt(2)
@@ -370,9 +320,11 @@ while True:
         player.update_image("southeast")
         player.moving_southeast = True
     if keys[pygame.K_s] and keys[pygame.K_a]:
-        if player.dashing:
+        if keys[pygame.K_SPACE] and (player.current_stamina > 0):
             player.x -= player.dash_speed / math.sqrt(2)
             player.y += player.dash_speed / math.sqrt(2)
+            player.current_stamina -= 0.5
+            pygame.time.set_timer(pygame.USEREVENT, 1000) #Dash lasts for 1 second
         else:
             player.x -= player.speed / math.sqrt(2)
             player.y += player.speed / math.sqrt(2)
