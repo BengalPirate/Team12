@@ -19,6 +19,7 @@ print(pygame.get_error())
 
 #sets th size of the screen for display
 display = pygame.display.set_mode((800, 600))
+SCREEN_WIDTH, SCREEN_HEIGHT = display.get_size()
 
 # creates an object to help trakc time
 clock = pygame.time.Clock()
@@ -28,6 +29,12 @@ class Player:
     def __init__(self, x, y, width, height): # Define initital properties of the player
         self.x = x
         self.y = y
+        self.max_health =100
+        self.current_health = self.max_health
+        self.max_stamina = 100
+        self.current_stamina = self.max_stamina
+        self.max_power = 100
+        self.current_power = self.max_power
         self.speed = 5 #define player's speed
         self.frame = 0
         self.moving_right = False
@@ -40,8 +47,9 @@ class Player:
         self.moving_southwest = False
         self.dash_speed = 10 # A faster speed for dashing
         self.dashing = False #Indicates whether the player is currently dashing
-        self.dash_time = 0 # Time when dash was started
-        self.dash_duration = 1 # Duration of the dash in seconds
+        self.dash_start_time = None # Time when dash was started
+        self.dash_stop_time = None # Time when dash stops
+        #self.dash_duration = 1 # Duration of the dash in seconds
 
 
         # checks files for images to use when player moves in a particular direction
@@ -77,6 +85,38 @@ class Player:
             self.frame = (self.frame +1) % 4 # cycle through frames 0-3
             self.direction = direction
             self.current_image = self.images[direction][self.frame]
+
+    def draw_bars(self, display):
+        bar_width = 200
+        bar_height = 10
+        health_bar_color = (0,255,0) 
+        stamina_bar_color = (0,0,255)
+        power_bar_color = (255,255,0)
+        margin = 20
+        health_bar_x = 20 # Distance from left side of the screen
+        health_bar_y = SCREEN_HEIGHT - (bar_height *2) - (margin *2) # Distance from top of the screen
+
+        stamina_bar_x = 20 # Distance from left side of the screen
+        stamina_bar_y = SCREEN_HEIGHT - (bar_height *1.5) - (margin *1.5) # Distance from top of the screen
+
+        power_bar_x = 20 # Distance from left side of the screen
+        power_bar_y = SCREEN_HEIGHT - bar_height - margin # Distance from top of the screen
+
+
+        # Calculate the width of the health bar based on current health
+        current_health_width = int((self.current_health / self.max_health) * bar_width)
+        current_stamina_width = int((self.current_stamina / self.max_stamina) * bar_width)
+        current_power_width = int((self.current_power / self.max_power) * bar_width)
+
+        # Draw the full health bar
+        pygame.draw.rect(display, (128,128,128), pygame.Rect(health_bar_x, health_bar_y, bar_width, bar_height))
+        pygame.draw.rect(display, (128,128,128), pygame.Rect(stamina_bar_x, stamina_bar_y, bar_width, bar_height))
+        pygame.draw.rect(display, (128,128,128), pygame.Rect(power_bar_x, power_bar_y, bar_width, bar_height))
+
+        # Draw the current health on top of the full health bar
+        pygame.draw. rect(display, health_bar_color, pygame.Rect(health_bar_x, health_bar_y, current_health_width, bar_height))
+        pygame.draw. rect(display, stamina_bar_color, pygame.Rect(stamina_bar_x, stamina_bar_y, current_stamina_width, bar_height))
+        pygame.draw. rect(display, power_bar_color, pygame.Rect(power_bar_x, power_bar_y, current_power_width, bar_height))
 
     def main(self, display, scroll): # Method for displaying the player
         
@@ -117,11 +157,45 @@ class Player:
         self.moving_southeast = False
         self.moving_southwest = False
     
+    def update(self, dt):  # This function is called every frame of the game
+        # Dashing logic
+        if self.dashing:
+            self.speed = self.dash_speed
+            # Check if dash duration has passed
+            if self.dash_start_time and time.time() - self.dash_start_time >= 1:
+                self.dashing = False
+                self.dash_stop_time = time.time()
+                self.speed = self.normal_speed
+        else:
+            self.speed = self.normal_speed
+            # Check if stopped dash duration has passed
+            if self.dash_stop_time and time.time() - self.dash_stop_time >= 1 and self.space_key_down:
+                self.dashing = True
+                self.dash_start_time = time.time()
+                self.speed = self.dash_speed
+                 
+    def handle_key_down(self, key):
+        if key == 'space':
+            self.space_key_down = True
+            if not self.dashing and (not self.dash_stop_time or time.time() - self.dash_stop_time >= 1):
+                self.dashing = True
+                self.dash_start_time = time.time()
+                self.speed = self.dash_speed
+                
+    def handle_key_up(self, key):
+        if key == 'space':
+            self.space_key_down = False
+            if self.dashing:
+                self.dashing = False
+                self.dash_stop_time = time.time()
+                self.speed = self.normal_speed
+    
+    '''
     def start_dash(self):
         if not self.dashing:
             self.dashing = True 
             self.dash_time = pygame.time.get_ticks() / 1000 # Get the current time
-
+    '''
 
 # Creates a class for the bullet
 class PlayerBullet:
@@ -182,9 +256,20 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: # If the event is a quit, exit the game
             sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                if not player.dashing:
+                    player.start_dash()
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_SPACE:
+                player.dashing = False
 
     # Get a list of all keys currently being pressed down
     keys = pygame.key.get_pressed()
+
+    player.main(display, display_scroll)
+    player.draw_bars(display)
+
 
     #Check if bullet has been fired
     bullet_fired = False
@@ -296,7 +381,7 @@ while True:
         player.update_image("southwest")
         player.moving_southwest = True
 
-    if player.dashing and pygame.time.get_ticks() / 500 > player.dash_time + player.dash_duration:
+    if player.dashing and pygame.time.get_ticks() / 1000 > player.dash_time + player.dash_duration:
         player.dashing = False    
 
     # Update the display scroll based on player's position
