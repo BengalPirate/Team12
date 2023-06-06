@@ -38,6 +38,10 @@ class Player:
         self.moving_northwest = False
         self.moving_southeast = False
         self.moving_southwest = False
+        self.dash_speed = 10 # A faster speed for dashing
+        self.dashing = False #Indicates whether the player is currently dashing
+        self.dash_time = 0 # Time when dash was started
+        self.dash_duration = 1 # Duration of the dash in seconds
 
 
         # checks files for images to use when player moves in a particular direction
@@ -112,6 +116,12 @@ class Player:
         self.moving_northwest = False
         self.moving_southeast = False
         self.moving_southwest = False
+    
+    def start_dash(self):
+        if not self.dashing:
+            self.dashing = True 
+            self.dash_time = pygame.time.get_ticks() / 1000 # Get the current time
+
 
 # Creates a class for the bullet
 class PlayerBullet:
@@ -152,6 +162,7 @@ class PlayerBullet:
         self.y += self.y_vel
 
         pygame.draw.circle(display, (0,0,0), (self.x - scroll[0], self.y - scroll[1]), 5)
+
 
 # Creates an instance of the player
 player = Player(400, 300, 32, 32) 
@@ -204,43 +215,89 @@ while True:
         player_bullets.append(PlayerBullet(player.x, player.y, "right"))
         bullet_fired = True
 
+    if keys[pygame.K_SPACE]:
+        player.start_dash()
+
     # Move the player according to key presses and updates images
     if keys[pygame.K_w]:
-        player.y -= player.speed
+        if player.dashing:
+            player.y -= player.dash_speed
+        else:
+            player.y -= player.speed 
+        #player.y -= player.speed
         player.update_image("up")
         player.moving_up = True
     if keys[pygame.K_a]:
-        player.x -= player.speed
+        if player.dashing:
+            player.x -= player.dash_speed
+        else:
+            player.x -= player.speed 
+        #player.x -= player.speed
         player.update_image("left")
         player.moving_left = True
     if keys[pygame.K_s]:
-        player.y += player.speed
+        if player.dashing:
+            player.y += player.dash_speed
+        else:
+            player.y += player.speed 
+        #player.y += player.speed
         player.update_image("down")
         player.moving_down = True
     if keys[pygame.K_d]:
-        player.x += player.speed
+        if player.dashing:
+            player.x += player.dash_speed
+        else:
+            player.x += player.speed 
+        #player.x += player.speed
         player.update_image("right")
         player.moving_right = True
     if keys[pygame.K_w] and keys[pygame.K_d]:
-        player.x += player.speed
-        player.y -= player.speed
+        if player.dashing:
+            player.x += player.dash_speed / math.sqrt(2)
+            player.y -= player.dash_speed / math.sqrt(2)
+        else:
+            player.x += player.speed / math.sqrt(2)
+            player.y -= player.speed / math.sqrt(2)
+        #player.x += player.speed
+        #player.y -= player.speed
         player.update_image("northeast")
         player.moving_northeast = True
     if keys[pygame.K_w] and keys[pygame.K_a]:
-        player.x -= player.speed
-        player.y -= player.speed
+        if player.dashing:
+            player.x -= player.dash_speed / math.sqrt(2)
+            player.y -= player.dash_speed / math.sqrt(2)
+        else:
+            player.x -= player.speed / math.sqrt(2)
+            player.y -= player.speed / math.sqrt(2)
+        #player.x -= player.speed
+        #player.y -= player.speed
         player.update_image("northwest")
         player.moving_northwest = True
     if keys[pygame.K_s] and keys[pygame.K_d]:
-        player.x += player.speed
-        player.y += player.speed
+        if player.dashing:
+            player.x += player.dash_speed / math.sqrt(2)
+            player.y += player.dash_speed / math.sqrt(2)
+        else:
+            player.x += player.speed / math.sqrt(2)
+            player.y += player.speed / math.sqrt(2)
+        #player.x += player.speed
+        #player.y += player.speed
         player.update_image("southeast")
         player.moving_southeast = True
     if keys[pygame.K_s] and keys[pygame.K_a]:
-        player.x -= player.speed
-        player.y += player.speed
+        if player.dashing:
+            player.x -= player.dash_speed / math.sqrt(2)
+            player.y += player.dash_speed / math.sqrt(2)
+        else:
+            player.x -= player.speed / math.sqrt(2)
+            player.y += player.speed / math.sqrt(2)
+        #player.x -= player.speed
+        #player.y += player.speed
         player.update_image("southwest")
         player.moving_southwest = True
+
+    if player.dashing and pygame.time.get_ticks() / 500 > player.dash_time + player.dash_duration:
+        player.dashing = False    
 
     # Update the display scroll based on player's position
     display_scroll[0] = player.x - 400
