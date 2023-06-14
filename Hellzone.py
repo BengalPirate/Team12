@@ -10,7 +10,7 @@ pygame.init()
 pygame.mixer.init()
 
 #load mp3 file
-pygame.mixer.music.load('/home/x/Desktop/team12/Team12/final_boss.mp3')
+pygame.mixer.music.load('final_boss.mp3')
 
 #Play the music indefinitely
 pygame.mixer.music.play(-1)
