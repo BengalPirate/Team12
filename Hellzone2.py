@@ -12,7 +12,11 @@ all_sprites = pygame.sprite.Group()
 #pygame.mixer.init()
 
 #load mp3 file
-#pygame.mixer.music.load('/home/x/Desktop/team12/Team12/final_boss.mp3')
+<<<<<<< HEAD
+#pygame.mixer.music.load('Team12/final_boss.mp3')
+=======
+pygame.mixer.music.load('final_boss.mp3')
+>>>>>>> 5544bd55d0d3967d1996c86b3c0e169f4bcf0761
 
 #Play the music indefinitely
 #pygame.mixer.music.play(-1)
