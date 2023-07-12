@@ -25,6 +25,9 @@ SCREEN_WIDTH, SCREEN_HEIGHT = display.get_size()
 
 # creates an object to help trakc time
 clock = pygame.time.Clock()
+game_active = False
+game_pause = False
+text_font = pygame.font.Font('fonts/Pixeltype.ttf', 50)
 
 scroll_offset = [0, 0]
 
@@ -257,81 +260,92 @@ while True:
             sys.exit()
         # Let's assume that pygame.K_SPACE is the key for starting a dash
 
-
-    # Get a list of all keys currently being pressed down
-    keys = pygame.key.get_pressed()  
-
-
-    player.main(display, display_scroll)
-    player.draw_bars(display)
-
-    all_sprites.update()
-    all_sprites.draw(display)
-
-    #Check if bullet has been fired
-    bullet_fired = False
-    
-    key_combinations = {
-        (pygame.K_UP, pygame.K_RIGHT): "northeast",
-        (pygame.K_UP, pygame.K_LEFT): "northwest",
-        (pygame.K_DOWN, pygame.K_RIGHT): "southeast",
-        (pygame.K_DOWN, pygame.K_LEFT): "southwest",
-        (pygame.K_UP,): "up",
-        (pygame.K_DOWN,): "down",
-        (pygame.K_LEFT,): "left",
-        (pygame.K_RIGHT,): "right"
-    }
-
-    for combination, direction in key_combinations.items():
-        if all(keys[key] for key in combination) and not bullet_fired:
-            player_bullets.append(PlayerBullet(player.rect.x, player.rect.y, direction))
-            bullet_fired = True
-     
-    key_movements = {
-        (pygame.K_w,): ("up", 0, -1),
-        (pygame.K_a,): ("left", -1, 0),
-        (pygame.K_s,): ("down", 0, 1),
-        (pygame.K_d,): ("right", 1, 0),
-        (pygame.K_w, pygame.K_d): ("northeast", 1, -1),
-        (pygame.K_w, pygame.K_a): ("northwest", -1, -1),
-        (pygame.K_s, pygame.K_d): ("southeast", 1, 1),
-        (pygame.K_s, pygame.K_a): ("southwest", -1, 1)
-    }
-
-    for keys_combination, (direction, dx, dy) in key_movements.items():
-        if all(keys[key] for key in keys_combination):
-            if keys[pygame.K_SPACE] and (player.current_stamina > 0):
-                player.rect.x += player.dash_speed * dx / math.sqrt(2)
-                player.rect.y += player.dash_speed * dy / math.sqrt(2)
-                player.current_stamina -= 0.5
-                pygame.time.set_timer(pygame.USEREVENT, 1000)  # Dash lasts for 1 second
-            else:
-                player.rect.x += player.speed * dx / math.sqrt(2)
-                player.rect.y += player.speed * dy / math.sqrt(2)
-            player.update_image(direction)
-            setattr(player, "moving_" + direction, True)
+        if game_active:
+        # Get a list of all keys currently being pressed down
+            keys = pygame.key.get_pressed()  
 
 
-    if player.dashing and pygame.time.get_ticks() / 1000 > player.dash_time + player.dash_duration:
-        player.dashing = False    
+            player.main(display, display_scroll)
+            player.draw_bars(display)
 
-    # Update the display scroll based on player's position
-    display_scroll[0] = player.rect.x - 400
-    display_scroll[1] = player.rect.y - 300
+            all_sprites.update()
+            all_sprites.draw(display)
 
-    # Draw a static rectangle to the screen, offset by the display scroll
-    pygame.draw.rect(display, (255, 255, 255), (100-display_scroll[0], 100-display_scroll[1], 16, 16))
+            #Check if bullet has been fired
+            bullet_fired = False
+            
+            key_combinations = {
+                (pygame.K_UP, pygame.K_RIGHT): "northeast",
+                (pygame.K_UP, pygame.K_LEFT): "northwest",
+                (pygame.K_DOWN, pygame.K_RIGHT): "southeast",
+                (pygame.K_DOWN, pygame.K_LEFT): "southwest",
+                (pygame.K_UP,): "up",
+                (pygame.K_DOWN,): "down",
+                (pygame.K_LEFT,): "left",
+                (pygame.K_RIGHT,): "right"
+            }
 
-    # Update the player display
-    player.main(display, display_scroll)
+            for combination, direction in key_combinations.items():
+                if all(keys[key] for key in combination) and not bullet_fired:
+                    player_bullets.append(PlayerBullet(player.rect.x, player.rect.y, direction))
+                    bullet_fired = True
+            
+            key_movements = {
+                (pygame.K_w,): ("up", 0, -1),
+                (pygame.K_a,): ("left", -1, 0),
+                (pygame.K_s,): ("down", 0, 1),
+                (pygame.K_d,): ("right", 1, 0),
+                (pygame.K_w, pygame.K_d): ("northeast", 1, -1),
+                (pygame.K_w, pygame.K_a): ("northwest", -1, -1),
+                (pygame.K_s, pygame.K_d): ("southeast", 1, 1),
+                (pygame.K_s, pygame.K_a): ("southwest", -1, 1)
+            }
 
-    # Update the bullet displays
-    for bullet in player_bullets:
-        bullet.main(display, display_scroll)
+            for keys_combination, (direction, dx, dy) in key_movements.items():
+                if all(keys[key] for key in keys_combination):
+                    if keys[pygame.K_SPACE] and (player.current_stamina > 0):
+                        player.rect.x += player.dash_speed * dx / math.sqrt(2)
+                        player.rect.y += player.dash_speed * dy / math.sqrt(2)
+                        player.current_stamina -= 0.5
+                        pygame.time.set_timer(pygame.USEREVENT, 1000)  # Dash lasts for 1 second
+                    else:
+                        player.rect.x += player.speed * dx / math.sqrt(2)
+                        player.rect.y += player.speed * dy / math.sqrt(2)
+                    player.update_image(direction)
+                    setattr(player, "moving_" + direction, True)
 
-    for Enemy in enemies:
-        Enemy.main(display)
 
+            if player.dashing and pygame.time.get_ticks() / 1000 > player.dash_time + player.dash_duration:
+                player.dashing = False    
+
+            # Update the display scroll based on player's position
+            display_scroll[0] = player.rect.x - 400
+            display_scroll[1] = player.rect.y - 300
+       
+        else:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                        game_active = True
+    if game_active:
+        # Draw a static rectangle to the screen, offset by the display scroll
+        pygame.draw.rect(display, (255, 255, 255), (100-display_scroll[0], 100-display_scroll[1], 16, 16))
+
+        # Update the player display
+        player.main(display, display_scroll)
+
+        # Update the bullet displays
+        for bullet in player_bullets:
+            bullet.main(display, display_scroll)
+
+        for Enemy in enemies:
+            Enemy.main(display)
+    else:
+        display.fill((84,12,123))
+        hearder_text = text_font.render('Start Game', False, 'Black')
+        header_rect = hearder_text.get_rect(center = (400,50))
+        start_game_text = text_font.render('Press Space Bar to Start Game', False, 'Black')
+        start_game_text_rect = start_game_text.get_rect(center = (400, 300))
+        display.blit(start_game_text,start_game_text_rect)
+        display.blit(hearder_text,header_rect)
     # Limit the game to 60 frames per second
     clock.tick(60)
 
