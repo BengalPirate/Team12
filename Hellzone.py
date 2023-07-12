@@ -78,7 +78,7 @@ class Player:
             self.image = pygame.Surface((width, height))
             self.image.blit(self.current_image, (0,0))
             self.use_images = True
-            #this is an edit
+            #this is an edit """And this is another edit"""
             #self.width = self.current_image.get_width()
             #self.height = self.current_image.get_height()
             #self.use_images = True
