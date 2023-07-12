@@ -297,6 +297,8 @@ plain4_frame_1 = plains4_sprite_sheet.get_image(1, 16, 24, 3, BLACK)
 plain4_frame_2 = plains4_sprite_sheet.get_image(2, 16, 24, 3, BLACK)
 plain4_frame_3 = plains4_sprite_sheet.get_image(3, 16, 24, 3, BLACK)
 
+#
+
 # decor section
 decor_frame = decor_sprite_sheet.get_image(0, 8, 8, 3, BLACK)
 
