@@ -3,6 +3,7 @@ import pygame
 import sys 
 import math
 import random
+import spritesheet
 
 
 #Initializes all imported pygame modules
@@ -79,9 +80,9 @@ class Player:
             self.image.blit(self.current_image, (0,0))
             self.use_images = True
             
-            #self.width = self.current_image.get_width()
-            #self.height = self.current_image.get_height()
-            #self.use_images = True
+            # self.width = self.current_image.get_width()
+            # self.height = self.current_image.get_height()
+            # self.use_images = True
 
         # if no images can be found we default to a black triangle
         except (pygame.error, FileNotFoundError):
@@ -246,10 +247,63 @@ display_scroll = [0,0]
 # Creates a list to store player bullets
 player_bullets = []
 
+# SPRITESHEETS
+# input all tilesets needed
+BLACK = (0, 0, 0)
+
+plains_1 = pygame.image.load('tilesets/plains/sprite_0.png').convert_alpha()
+plains_2 = pygame.image.load('tilesets/plains/sprite_1.png').convert_alpha()
+plains_3 = pygame.image.load('tilesets/plains/sprite_2.png').convert_alpha()
+plains_4 = pygame.image.load('tilesets/plains/sprite_3.png').convert_alpha()
+plains_5 = pygame.image.load('tilesets/plains/sprite_4.png').convert_alpha()
+
+decor = pygame.image.load('tilesets/decor/sprite_1.png').convert_alpha()
+
+plains0_sprite_sheet = spritesheet.SpriteSheet(plains_1)
+plains1_sprite_sheet = spritesheet.SpriteSheet(plains_2)
+plains2_sprite_sheet = spritesheet.SpriteSheet(plains_3)
+plains3_sprite_sheet = spritesheet.SpriteSheet(plains_4)
+plains4_sprite_sheet = spritesheet.SpriteSheet(plains_5)
+decor_sprite_sheet = spritesheet.SpriteSheet(decor)
+
+
+# sprite_0 section
+plain0_frame_0 = plains0_sprite_sheet.get_image(0, 16, 24, 3, BLACK)
+plain0_frame_1 = plains0_sprite_sheet.get_image(1, 16, 24, 3, BLACK)
+plain0_frame_2 = plains0_sprite_sheet.get_image(2, 16, 24, 3, BLACK)
+plain0_frame_3 = plains0_sprite_sheet.get_image(3, 16, 24, 3, BLACK)
+
+# sprite_1 section
+plain1_frame_0 = plains1_sprite_sheet.get_image(0, 16, 24, 3, BLACK)
+plain1_frame_1 = plains1_sprite_sheet.get_image(1, 16, 24, 3, BLACK)
+plain1_frame_2 = plains1_sprite_sheet.get_image(2, 16, 24, 3, BLACK)
+plain1_frame_3 = plains1_sprite_sheet.get_image(3, 16, 24, 3, BLACK)
+
+# sprite_2 section
+plain2_frame_0 = plains2_sprite_sheet.get_image(0, 16, 24, 3, BLACK)
+plain2_frame_1 = plains2_sprite_sheet.get_image(1, 16, 24, 3, BLACK)
+plain2_frame_2 = plains2_sprite_sheet.get_image(2, 16, 24, 3, BLACK)
+plain2_frame_3 = plains2_sprite_sheet.get_image(3, 16, 24, 3, BLACK)
+
+# sprite_3 section
+plain3_frame_0 = plains3_sprite_sheet.get_image(0, 16, 24, 3, BLACK)
+plain3_frame_1 = plains3_sprite_sheet.get_image(1, 16, 24, 3, BLACK)
+plain3_frame_2 = plains3_sprite_sheet.get_image(2, 16, 24, 3, BLACK)
+plain3_frame_3 = plains3_sprite_sheet.get_image(3, 16, 24, 3, BLACK)
+
+# sprite_4 section
+plain4_frame_0 = plains4_sprite_sheet.get_image(0, 16, 24, 3, BLACK)
+plain4_frame_1 = plains4_sprite_sheet.get_image(1, 16, 24, 3, BLACK)
+plain4_frame_2 = plains4_sprite_sheet.get_image(2, 16, 24, 3, BLACK)
+plain4_frame_3 = plains4_sprite_sheet.get_image(3, 16, 24, 3, BLACK)
+
+# decor section
+decor_frame = decor_sprite_sheet.get_image(0, 8, 8, 3, BLACK)
+
 # starts the main game loop
 while True:
     # Fills the display surface with color
-    display.fill((255,0,0))
+    display.fill((80,155,102))
 
     # get the event from the queue
     for event in pygame.event.get():
@@ -267,6 +321,69 @@ while True:
 
     all_sprites.update()
     all_sprites.draw(display)
+
+    # show frame image - HINT: (Horizontal, Vertical)
+    # random patch to the left
+    display.blit(plain0_frame_0, (0, 50))
+    display.blit(plain1_frame_0, (0, 98))
+    display.blit(plain1_frame_0, (0, 144))
+    display.blit(plain1_frame_0, (0, 192))
+    display.blit(plain2_frame_0, (0, 240))
+
+    # ground patch near character 
+    display.blit(plain1_frame_2, (400, 300)) # middle
+    display.blit(plain0_frame_2, (400, 252)) # top
+    display.blit(plain2_frame_2, (400, 348)) # bottom
+
+    display.blit(plain1_frame_2, (352, 300))
+    display.blit(plain0_frame_2, (352, 252)) 
+    display.blit(plain2_frame_2, (352, 348))
+
+    display.blit(plain1_frame_2, (310, 300))
+    display.blit(plain0_frame_2, (310, 252)) 
+    display.blit(plain2_frame_2, (310, 348))
+
+    display.blit(plain2_frame_2, (280, 348))
+    display.blit(plain2_frame_2, (235, 348))
+    display.blit(plain2_frame_1, (195, 348))
+
+    display.blit(plain1_frame_1, (195, 300))
+    display.blit(plain1_frame_1, (195, 265))
+    display.blit(plain1_frame_1, (195, 220))
+    display.blit(plain0_frame_1, (195, 195))
+    
+
+    # trouble shoot
+    display.blit(plain0_frame_2, (235, 195))
+    display.blit(plain0_frame_3, (280, 195))
+    display.blit(plain4_frame_2, (275, 245))
+
+    # dirt
+    display.blit(plain1_frame_2, (235, 310))
+    display.blit(plain1_frame_2, (280, 310))
+    display.blit(plain1_frame_2, (243, 270))
+    display.blit(plain1_frame_2, (243, 240))
+    display.blit(plain1_frame_2, (280, 290))
+    
+
+    display.blit(plain1_frame_2, (425, 300))
+    display.blit(plain0_frame_2, (425, 252)) 
+    display.blit(plain2_frame_2, (425, 348))
+
+    display.blit(plain1_frame_2, (470, 300))
+    display.blit(plain0_frame_2, (470, 252)) 
+    display.blit(plain2_frame_2, (470, 348))
+
+    
+
+    # close off right edge
+    display.blit(plain1_frame_3, (510, 300))
+    display.blit(plain0_frame_3, (510, 252)) 
+    display.blit(plain2_frame_3, (510, 348))
+
+    display.blit(decor_frame, (400, 275))
+
+
 
     #Check if bullet has been fired
     bullet_fired = False
