@@ -5,20 +5,11 @@ import math
 import random
 import spritesheet
 
-
 #Initializes all imported pygame modules
 pygame.init()
 
 all_sprites = pygame.sprite.Group()
 #pygame.mixer.init()
-
-#load mp3 file
-#pygame.mixer.music.load('Team12/final_boss.mp3')
-
-#Play the music indefinitely
-#pygame.mixer.music.play(-1)
-
-#print(pygame.get_error())
 
 #sets th size of the screen for display
 display = pygame.display.set_mode((800, 600))
@@ -28,7 +19,7 @@ SCREEN_WIDTH, SCREEN_HEIGHT = display.get_size()
 clock = pygame.time.Clock()
 game_active = False
 game_pause = False
-text_font = pygame.font.Font('fonts/Pixeltype.ttf', 50)
+text_font = pygame.font.Font('/home/bengal_pirate/Team12/Team12/fonts/Pixeltype.ttf', 50)
 
 scroll_offset = [0, 0]
 
@@ -56,11 +47,6 @@ class Player:
         self.moving_southwest = False
         self.dash_speed = 10 # A faster speed for dashing
         self.dashing = False #Indicates whether the player is currently dashing
-        
-#youtube tutorial of pygame
-#player_walk_images = [pygame.image.load("player_walk_0.png"), pygame.image.load("player_walk_0.png"),
-#pygame.image.load("player_walk_0.png"),pygame.image.load("player_walk_0.png"),]
-
 
         # checks files for images to use when player moves in a particular direction
         try:
@@ -144,7 +130,7 @@ class Player:
             #the transform.scale changes the size of the player
             display.blit(pygame.transform.scale(self.current_image, (32,42)), (self.rect.x - scroll[0], self.rect.y - scroll[1]))
         else:
-            pygame.draw.rect(display, (0,0,0), (self.rect.x - scroll[0], self.rect.y - scroll[1], self.rect.width, self.rect.height))
+            pygame.draw.rect(display, (255, 255, 255), (self.rect.x - scroll[0], self.rect.y - scroll[1], self.rect.width, self.rect.height))
   
         self.moving_right = False
         self.moving_left = False
@@ -158,8 +144,10 @@ class Player:
 # Creates a class for the bullet
 class PlayerBullet:
     def __init__(self, x, y, direction): #Define initial properties of the bullet
-        self.x = x
-        self.y = y
+        super().__init__()
+        width = 10 
+        height = 10
+        self.rect = pygame.Rect(x, y, width, height)
         self.speed = 10
         self.direction = direction
 
@@ -190,16 +178,15 @@ class PlayerBullet:
             self.y_vel = self.speed / math.sqrt(2)
 
     def main(self, display, scroll): # Method for moving and displaying the bullet
-        self.x += self.x_vel
-        self.y += self.y_vel
+        self.rect.x += self.x_vel
+        self.rect.y += self.y_vel
 
-        pygame.draw.circle(display, (0,0,0), (self.x - scroll[0], self.y - scroll[1]), 5)
+        pygame.draw.circle(display, (0,0,0), (self.rect.x - scroll[0], self.rect.y - scroll[1]), 5)
 
 class Enemy(pygame.sprite.Sprite):
-    def __init__(self, x, y):
+    def __init__(self, x, y, width, height):
         super().__init__()
-        self.x = x
-        self.y = y
+        self.rect = pygame.Rect(x, y, width, height)
         self.animation_images = []
         for i in range(4):
             try:
@@ -211,7 +198,37 @@ class Enemy(pygame.sprite.Sprite):
         self.reset_offset = 0
         self.offset_x = random.randrange(-150, 150)
         self.offset_y = random.randrange(-150, 150)
-    def main(self, display):
+        self.max_health = 100
+        self.current_health = 100
+        self.max_stamina = 100
+        self.current_stamina = 100
+        self.max_power = 100
+        self.current_power = 100
+    
+    def draw_bars(self, display, scroll):
+        bar_width = 40
+        bar_height = 5
+        health_bar_color = (0, 255, 0)
+        stamina_bar_color = (0, 0, 255)
+        margin = 5
+        
+        # Calculate the position of the health bar and stamina bar relative to the enemy's position and the display scroll
+        health_bar_x = self.rect.x - scroll[0] + (self.rect.width // 2) - (bar_width // 2)
+        health_bar_y = self.rect.y - scroll[1] - (2 * bar_height) - (2 * margin)
+
+        stamina_bar_x = self.rect.x - scroll[0] + (self.rect.width // 2) - (bar_width // 2)
+        stamina_bar_y = self.rect.y - scroll[1] - bar_height - margin
+
+        current_health_width = int((self.current_health / self.max_health) * bar_width)
+        current_stamina_width = int((self.current_stamina / self.max_stamina) * bar_width)
+
+        pygame.draw.rect(display, (128, 128, 128), pygame.Rect(health_bar_x, health_bar_y, bar_width, bar_height))
+        pygame.draw.rect(display, (128, 128, 128), pygame.Rect(stamina_bar_x, stamina_bar_y, bar_width, bar_height))
+
+        pygame.draw.rect(display, health_bar_color, pygame.Rect(health_bar_x, health_bar_y, current_health_width, bar_height))
+        pygame.draw.rect(display, stamina_bar_color, pygame.Rect(stamina_bar_x, stamina_bar_y, current_stamina_width, bar_height))
+    
+    def main(self, display, scroll):
         if self.animation_count +1 == 16:
             self.animation_count = 0
         self.animation_count += 1
@@ -223,25 +240,24 @@ class Enemy(pygame.sprite.Sprite):
         else: 
             self.reset_offset -= 1
 
-        if player.rect.x + self.offset_x > self.x-display_scroll[0]:
-            self.x += 1
-        elif player.rect.x + self.offset_x < self.x-display_scroll[0]:
-            self.x -= 1
+        if player.rect.x + self.offset_x > self.rect.x-display_scroll[0]:
+            self.rect.x += 1
+        elif player.rect.x + self.offset_x < self.rect.x-display_scroll[0]:
+            self.rect.x -= 1
 
-        if player.rect.y + self.offset_y > self.y-display_scroll[1]:
-            self.y += 1
-        elif player.rect.y + self.offset_y < self.y-display_scroll[1]:
-            self.y -= 1
+        if player.rect.y + self.offset_y > self.rect.y-display_scroll[1]:
+            self.rect.y += 1
+        elif player.rect.y + self.offset_y < self.rect.y-display_scroll[1]:
+            self.rect.y -= 1
         
-        display.blit(pygame.transform.scale(self.animation_images[self.animation_count//4],(32, 30)), (self.x-display_scroll[0], self.y-display_scroll[1]))
+        display.blit(pygame.transform.scale(self.animation_images[self.animation_count//4],(32, 30)), (self.rect.x-display_scroll[0], self.rect.y-display_scroll[1]))
+        
+        self.draw_bars(display, scroll)
 
-        
-   
-        
 # Creates an instance of the player
 player = Player(400, 300, 32, 32)
 
-enemies = [Enemy(200,300)]
+enemies = [Enemy(200,300, 32, 32)]
 
 
 # Defines the initial display scroll
@@ -254,55 +270,13 @@ player_bullets = []
 # input all tilesets needed
 BLACK = (0, 0, 0)
 
-plains_1 = pygame.image.load('tilesets/plains/sprite_0.png').convert_alpha()
-# plains_2 = pygame.image.load('tilesets/plains/sprite_1.png').convert_alpha()
-# plains_3 = pygame.image.load('tilesets/plains/sprite_2.png').convert_alpha()
-# plains_4 = pygame.image.load('tilesets/plains/sprite_3.png').convert_alpha()
-# plains_5 = pygame.image.load('tilesets/plains/sprite_4.png').convert_alpha()
-
-# decor = pygame.image.load('tilesets/decor/sprite_1.png').convert_alpha()
+plains_1 = pygame.image.load('/home/bengal_pirate/Team12/Team12/tilesets/plains/sprite_0.png').convert_alpha()
 
 plains0_sprite_sheet = spritesheet.SpriteSheet(plains_1)
-# plains1_sprite_sheet = spritesheet.SpriteSheet(plains_2)
-# plains2_sprite_sheet = spritesheet.SpriteSheet(plains_3)
-# plains3_sprite_sheet = spritesheet.SpriteSheet(plains_4)
-# plains4_sprite_sheet = spritesheet.SpriteSheet(plains_5)
-# decor_sprite_sheet = spritesheet.SpriteSheet(decor)
 
 
 # # sprite_0 section
 plain0_frame_0 = plains0_sprite_sheet.get_image(0, 16, 24, 3, BLACK)
-# plain0_frame_1 = plains0_sprite_sheet.get_image(1, 16, 24, 3, BLACK)
-# plain0_frame_2 = plains0_sprite_sheet.get_image(2, 16, 24, 3, BLACK)
-# plain0_frame_3 = plains0_sprite_sheet.get_image(3, 16, 24, 3, BLACK)
-
-# # sprite_1 section
-# plain1_frame_0 = plains1_sprite_sheet.get_image(0, 16, 24, 3, BLACK)
-# plain1_frame_1 = plains1_sprite_sheet.get_image(1, 16, 24, 3, BLACK)
-# plain1_frame_2 = plains1_sprite_sheet.get_image(2, 16, 24, 3, BLACK)
-# plain1_frame_3 = plains1_sprite_sheet.get_image(3, 16, 24, 3, BLACK)
-
-# # sprite_2 section
-# plain2_frame_0 = plains2_sprite_sheet.get_image(0, 16, 24, 3, BLACK)
-# plain2_frame_1 = plains2_sprite_sheet.get_image(1, 16, 24, 3, BLACK)
-# plain2_frame_2 = plains2_sprite_sheet.get_image(2, 16, 24, 3, BLACK)
-# plain2_frame_3 = plains2_sprite_sheet.get_image(3, 16, 24, 3, BLACK)
-
-# # sprite_3 section
-# plain3_frame_0 = plains3_sprite_sheet.get_image(0, 16, 24, 3, BLACK)
-# plain3_frame_1 = plains3_sprite_sheet.get_image(1, 16, 24, 3, BLACK)
-# plain3_frame_2 = plains3_sprite_sheet.get_image(2, 16, 24, 3, BLACK)
-# plain3_frame_3 = plains3_sprite_sheet.get_image(3, 16, 24, 3, BLACK)
-
-# # sprite_4 section
-# plain4_frame_0 = plains4_sprite_sheet.get_image(0, 16, 24, 3, BLACK)
-# plain4_frame_1 = plains4_sprite_sheet.get_image(1, 16, 24, 3, BLACK)
-# plain4_frame_2 = plains4_sprite_sheet.get_image(2, 16, 24, 3, BLACK)
-# plain4_frame_3 = plains4_sprite_sheet.get_image(3, 16, 24, 3, BLACK)
-
-# # decor section
-# decor_frame = decor_sprite_sheet.get_image(0, 8, 8, 3, BLACK)
-
 # starts the main game loop
 while True:
     # Fills the display surface with color
@@ -329,67 +303,6 @@ while True:
 
         all_sprites.update()
         all_sprites.draw(display)
-
-#         # show frame image - HINT: (Horizontal, Vertical)
-#         # random patch to the left
-#         display.blit(plain0_frame_0, (0, 50))
-#         display.blit(plain1_frame_0, (0, 98))
-#         display.blit(plain1_frame_0, (0, 144))
-#         display.blit(plain1_frame_0, (0, 192))
-#         display.blit(plain2_frame_0, (0, 240))
-
-#         # ground patch near character 
-#         display.blit(plain1_frame_2, (400, 300)) # middle
-#         display.blit(plain0_frame_2, (400, 252)) # top
-#         display.blit(plain2_frame_2, (400, 348)) # bottom
-
-#         display.blit(plain1_frame_2, (352, 300))
-#         display.blit(plain0_frame_2, (352, 252)) 
-#         display.blit(plain2_frame_2, (352, 348))
-
-#         display.blit(plain1_frame_2, (310, 300))
-#         display.blit(plain0_frame_2, (310, 252)) 
-#         display.blit(plain2_frame_2, (310, 348))
-
-#         display.blit(plain2_frame_2, (280, 348))
-#         display.blit(plain2_frame_2, (235, 348))
-#         display.blit(plain2_frame_1, (195, 348))
-
-#         display.blit(plain1_frame_1, (195, 300))
-#         display.blit(plain1_frame_1, (195, 265))
-#         display.blit(plain1_frame_1, (195, 220))
-#         display.blit(plain0_frame_1, (195, 195))
-
-
-#         # trouble shoot
-#         display.blit(plain0_frame_2, (235, 195))
-#         display.blit(plain0_frame_3, (280, 195))
-#         display.blit(plain4_frame_2, (275, 245))
-
-#         # dirt
-#         display.blit(plain1_frame_2, (235, 310))
-#         display.blit(plain1_frame_2, (280, 310))
-#         display.blit(plain1_frame_2, (243, 270))
-#         display.blit(plain1_frame_2, (243, 240))
-#         display.blit(plain1_frame_2, (280, 290))
-
-
-#         display.blit(plain1_frame_2, (425, 300))
-#         display.blit(plain0_frame_2, (425, 252)) 
-#         display.blit(plain2_frame_2, (425, 348))
-
-#         display.blit(plain1_frame_2, (470, 300))
-#         display.blit(plain0_frame_2, (470, 252)) 
-#         display.blit(plain2_frame_2, (470, 348))
-
-
-
-#         # close off right edge
-#         display.blit(plain1_frame_3, (510, 300))
-#         display.blit(plain0_frame_3, (510, 252)) 
-#         display.blit(plain2_frame_3, (510, 348))
-
-#         display.blit(decor_frame, (400, 275))
 
         #Check if bullet has been fired
         bullet_fired = False
@@ -454,8 +367,13 @@ while True:
         for bullet in player_bullets:
             bullet.main(display, display_scroll)
 
+            for enemy in enemies:
+                if bullet.rect.colliderect(enemy.rect):
+                    player_bullets.remove(bullet)
+                    break
+
         for Enemy in enemies:
-            Enemy.main(display)
+            Enemy.main(display, display_scroll)
 
         # Limit the game to 60 frames per second
         clock.tick(60)
