@@ -3,10 +3,11 @@ import pygame
 import sys 
 import math
 import random
-import spritesheet
+from spritesheet import TILE_SIZE, Editor, SpriteSheet
 from player import Player
 from bullet import PlayerBullet
 from enemy import Enemy
+from support import *
 
 # Initializes all imported pygame modules
 pygame.init()
@@ -21,7 +22,7 @@ SCREEN_WIDTH, SCREEN_HEIGHT = display.get_size()
 clock = pygame.time.Clock()
 game_active = False
 game_pause = False
-text_font = pygame.font.Font('/home/bengal_pirate/Team12/Team12/fonts/Pixeltype.ttf', 50)
+text_font = pygame.font.Font('fonts/Pixeltype.ttf', 50)
 
 scroll_offset = [0, 0]
 
@@ -44,17 +45,19 @@ player_bullets = []
 BLACK = (0, 0, 0)
 OFFSCREEN_ENEMY_COLOR = (0, 0, 255, 255)
 
-plains_1 = pygame.image.load('/home/bengal_pirate/Team12/Team12/tilesets/plains/sprite_0.png').convert_alpha()
 
-plains0_sprite_sheet = spritesheet.SpriteSheet(plains_1)
+land_tiles = import_folder_dict('tilesets/open-world')
+object_tiles = import_folder_dict('tilesets/open-world-objects')
 
-# # sprite_0 section
-plain0_frame_0 = plains0_sprite_sheet.get_image(0, 16, 24, 3, BLACK)
+edit = Editor(display_scroll, land_tiles, object_tiles)
+
+
+
 # starts the main game loop
 while True:
     # Fills the display surface with color
     # display.fill((80,155,102))
-    display.fill((255, 0, 0))
+    display.fill((220, 220, 220))
 
     # Get the screen height
     screen_height = display.get_height()
@@ -82,6 +85,13 @@ while True:
 
         # Check if bullet has been fired
         bullet_fired = False
+
+        SpriteSheet('').draw_tile_lines()
+        SpriteSheet('').get_current_cell()
+
+        # Draw a static rectangle to the screen, offset by the display scroll - moving environment sprite
+        edit.drawing_background(land_tiles)
+        edit.drawing_moving_background(object_tiles)
 
         key_combinations = {
             (pygame.K_UP, pygame.K_RIGHT): "northeast",
@@ -130,8 +140,7 @@ while True:
         display_scroll[0] = player.rect.x - 400
         display_scroll[1] = player.rect.y - 300
 
-        # Draw a static rectangle to the screen, offset by the display scroll
-        display.blit(plain0_frame_0, (100 - display_scroll[0], 100 - display_scroll[1]))
+        
 
         # Update the player display
         player.main(display, display_scroll)
