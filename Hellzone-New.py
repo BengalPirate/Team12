@@ -21,7 +21,7 @@ SCREEN_WIDTH, SCREEN_HEIGHT = display.get_size()
 clock = pygame.time.Clock()
 game_active = False
 game_pause = False
-text_font = pygame.font.Font('/home/bengal_pirate/Team12/Team12/fonts/Pixeltype.ttf', 50)
+text_font = pygame.font.Font('fonts/Pixeltype.ttf', 50)
 
 scroll_offset = [0, 0]
 
@@ -44,7 +44,7 @@ player_bullets = []
 BLACK = (0, 0, 0)
 OFFSCREEN_ENEMY_COLOR = (0, 0, 255, 255)
 
-plains_1 = pygame.image.load('/home/bengal_pirate/Team12/Team12/tilesets/plains/sprite_0.png').convert_alpha()
+plains_1 = pygame.image.load('tilesets/plains/sprite_0.png').convert_alpha()
 
 plains0_sprite_sheet = spritesheet.SpriteSheet(plains_1)
 

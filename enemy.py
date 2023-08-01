@@ -26,6 +26,7 @@ class Enemy(pygame.sprite.Sprite):
         self.max_power = 100
         self.current_power = 100
         self.behavior_type = behavior_type
+        self.enemy_death_count = 0
 
     def draw_bars(self, display, display_scroll):
         bar_width = 40
@@ -107,4 +108,7 @@ class Enemy(pygame.sprite.Sprite):
         self.current_health -= damage
         if self.current_health <= 0:
             return True
+        if self.current_health == 0:
+            self.enemy_death_count += 1
+            
         return False

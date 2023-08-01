@@ -3,8 +3,8 @@ import pygame
 import sys 
 import math
 import random
-
-
+from level import Level
+from level import levels_data
 #Initializes all imported pygame modules
 pygame.init()
 
@@ -27,7 +27,7 @@ SCREEN_WIDTH, SCREEN_HEIGHT = display.get_size()
 clock = pygame.time.Clock()
 game_active = False
 game_pause = False
-text_font = pygame.font.Font('/home/bengal_pirate/Team12/fonts/Pixeltype.ttf', 50)
+text_font = pygame.font.Font('fonts/Pixeltype.ttf', 50)
 
 scroll_offset = [0, 0]
 
@@ -252,7 +252,7 @@ player_bullets = []
 # starts the main game loop
 while True:
     # Fills the display surface with color
-    display.fill((255,0,0))
+    # display.fill((255,250,0))
 
     # Get a list of all keys currently being pressed down
     keys = pygame.key.get_pressed() 
@@ -268,7 +268,8 @@ while True:
                 game_active = True
 
     if game_active: 
-
+        generate_lvl = Level(levels_data)
+        generate_lvl.display_lvl(display)
         player.main(display, display_scroll)
         player.draw_bars(display)
 
