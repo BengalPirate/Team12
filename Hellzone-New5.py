@@ -11,8 +11,9 @@ from dragon import DragonHead
 from dragon import DragonBody
 from melee import MeleeAttack
 from pygame.math import Vector2
-from spritesheet import TILE_SIZE, Editor, SpriteSheet
+from spritesheet import TILE_SIZE, Editor, Tile
 from support import *
+from pytmx.util_pygame import load_pygame
 
 # Initializes all imported pygame modules
 pygame.init()
@@ -123,6 +124,17 @@ land_tiles = import_folder_dict('tilesets/open-world')
 object_tiles = import_folder_dict('tilesets/open-world-objects')
 
 edit = Editor(display_scroll, land_tiles, object_tiles)
+
+# get tileset
+tmx_data = load_pygame('data/tmx/hellzone.tmx')
+
+for layer in tmx_data.layers:
+    if hasattr(layer, 'data'):
+        for x, y, surf in layer.tiles():
+            # print(layer)
+            pos = (x * 32, y * 32)
+            Tile(pos = pos, surf = surf, groups = all_sprites)
+
 
 transitioned = False
 # starts the main game loop
@@ -351,12 +363,12 @@ while True:
         # Check if bullet has been fired
         bullet_fired = False
 
-        SpriteSheet('').draw_tile_lines()
-        SpriteSheet('').get_current_cell()
 
         # Draw a static rectangle to the screen, offset by the display scroll - moving environment sprite
-        edit.drawing_background(land_tiles)
-        edit.drawing_moving_background(object_tiles)
+        # edit.drawing_background(land_tiles)
+        edit.drawing_moving_background(object_tiles, display)
+
+        # edit.drawing_tiles()
 
         key_combinations = {
             (pygame.K_UP, pygame.K_RIGHT): "northeast",
