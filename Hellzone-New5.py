@@ -20,7 +20,7 @@ pygame.init()
 all_sprites = pygame.sprite.Group()
 
 # Sets the size of the screen for display
-display = pygame.display.set_mode((1920, 1080))
+display = pygame.display.set_mode((1080, 1080))
 SCREEN_WIDTH, SCREEN_HEIGHT = display.get_size()
 
 # Creates an object to help track time
