@@ -1,6 +1,5 @@
 import pygame
 import random
-import math
 import time
 
 # Global constants
@@ -13,6 +12,7 @@ DIRECTION_UPDATE_DELAY = 0  # delay in seconds
 RED = (255, 0, 0)
 WHITE = (255, 255, 255)
 BLUE = (0, 0, 255)
+GREEN = (0, 255, 0)
 
 class SnakePart:
     def __init__(self, x, y, color):
@@ -31,17 +31,25 @@ class SnakeBody(SnakePart):
     def __init__(self, x, y):
         super().__init__(x, y, WHITE)
 
+class SnakeTail(SnakePart):
+    def __init__(self, x, y):
+        super().__init__(x, y, GREEN)
+
 class Snake:
     def __init__(self):
         self.direction = random.choice([(BLOCK_SIZE, 0), (-BLOCK_SIZE, 0), (0, BLOCK_SIZE), (0, -BLOCK_SIZE)])
         self.body = [SnakeHead(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2)]
         self.body.extend([SnakeBody(WINDOW_WIDTH // 2 - i*BLOCK_SIZE, WINDOW_HEIGHT // 2) for i in range(1, 3)])
+        self.body[-1] = SnakeTail(self.body[-1].x, self.body[-1].y)  # Make the tail green
         self.last_direction_change = time.time()
 
     def update(self, food):
         # Make the snake's body follow the head
-        self.body = [SnakeHead(self.body[0].x + self.direction[0], self.body[0].y + self.direction[1])] + \
-                    [SnakeBody(part.x, part.y) for part in self.body[:-1]]
+        new_body = [SnakeHead(self.body[0].x + self.direction[0], self.body[0].y + self.direction[1])]
+        new_body.extend([SnakeBody(part.x, part.y) for part in self.body[:-2]])
+        new_body.append(SnakeTail(self.body[-2].x, self.body[-2].y)) # Append tail
+
+        self.body = new_body
 
         # Check if the snake hit the wall
         if self.body[0].x < 0 or self.body[0].x >= WINDOW_WIDTH or self.body[0].y < 0 or self.body[0].y >= WINDOW_HEIGHT:
@@ -50,7 +58,7 @@ class Snake:
         # Check if the snake has eaten the food
         if food.position == (self.body[0].x, self.body[0].y):
             food.position = food.get_random_position()  # food respawns at a new location
-            self.body.append(SnakeBody(self.body[-1].x, self.body[-1].y))  # The snake grows
+            self.body.insert(1, SnakeBody(self.body[0].x, self.body[0].y))  # The snake grows
 
         # Update the snake's direction
         now = time.time()
@@ -136,13 +144,13 @@ def main():
                 elif event.key == pygame.K_d:
                     food.move((BLOCK_SIZE, BLOCK_SIZE))
 
-        screen.fill((0, 0, 0))  # Fill the screen with black to differentiate the snake body (white), head (red), and food (blue)
+        screen.fill((0, 0, 0))  # Fill the screen with black
 
         if not snake.update(food):
             pygame.quit()
             return
 
-        for part in snake.body:  # changed from snake.parts to snake.body
+        for part in snake.body:
             part.draw(screen)
 
         food.draw(screen)
@@ -152,4 +160,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
