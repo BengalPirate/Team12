@@ -1,0 +1,60 @@
+import pygame
+
+pygame.init()
+
+# Set up screen
+screen_width = 800
+screen_height = 600
+screen = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption("My Game")
+
+# Define colors
+white = (255, 255, 255)
+black = (0, 0, 0)
+overlay_color = (0, 0, 0, 128)  # Semi-transparent black overlay
+
+# Define fonts
+font = pygame.font.Font(None, 36)
+
+is_paused = False
+
+def render_pause_menu(screen):
+    screen.fill(overlay_color)
+    
+    resume_text = font.render("Resume", True, white)
+    restart_text = font.render("Restart", True, white)
+    main_menu_text = font.render("Main Menu", True, white)
+    
+    resume_rect = resume_text.get_rect(center=(screen_width // 2, screen_height // 2 - 50))
+    restart_rect = restart_text.get_rect(center=(screen_width // 2, screen_height // 2))
+    main_menu_rect = main_menu_text.get_rect(center=(screen_width // 2, screen_height // 2 + 50))
+    
+    screen.blit(resume_text, resume_rect)
+    screen.blit(restart_text, restart_rect)
+    screen.blit(main_menu_text, main_menu_rect)
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_p:
+                is_paused = not is_paused
+            elif event.key == pygame.K_r and is_paused:  # Restart the game
+                # Reset game state here
+                is_paused = False
+            elif event.key == pygame.K_m and is_paused:  # Return to main menu
+                # Go back to main menu here
+                is_paused = False
+
+    screen.fill(black)  # Clear the screen
+
+    if is_paused:
+        render_pause_menu(screen)
+    else:
+        # Update and render game elements
+
+    pygame.display.flip()
+
+pygame.quit()
