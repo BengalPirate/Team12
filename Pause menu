@@ -1,0 +1,45 @@
+import pygame
+
+pygame.init()
+
+# Set up screen
+screen_width = 800
+screen_height = 600
+screen = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption("My Game")
+
+# Define colors
+white = (255, 255, 255)
+black = (0, 0, 0)
+overlay_color = (0, 0, 0, 128)  # Semi-transparent black overlay
+
+# Define fonts
+font = pygame.font.Font(None, 36)
+
+is_paused = False
+
+def render_pause_menu(screen):
+    screen.fill(overlay_color)
+    text = font.render("PAUSED", True, white)
+    text_rect = text.get_rect(center=(screen_width // 2, screen_height // 2))
+    screen.blit(text, text_rect)
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_p:
+                is_paused = not is_paused
+
+    screen.fill(black)  # Clear the screen
+
+    if is_paused:
+        render_pause_menu(screen)
+    else:
+        # Update and render game elements
+
+    pygame.display.flip()
+
+pygame.quit()
